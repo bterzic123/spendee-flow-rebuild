@@ -7,12 +7,14 @@ Five ranked ideas for Spendee's first-run flow, plus a clickable prototype of th
 | # | Idea | Potential outcome |
 | :-- | :-- | :-- |
 | 01 | Show the app before the price | CR +10–20% |
-| 02 | Turn three taps into a daily budget | CR +10–20% |
-| 03 | Put their budget and your awards on the paywall | CR +15–20% |
+| 02 | Turn a few taps into a daily budget | CR +10–20% |
+| 03 | Put their goal and your awards on the paywall | CR +15–20% |
 | 04 | Show both plans, and the saving | ARPU +10–15% |
 | 05 | One offer on close, not two | ARPU +10–15% |
 
 **Grounding.** Every price, rating, quote and feature line comes from Spendee's own published material: the App Store listing, spendee.com, the pricing page and Spendee's in-app screens. Impact ranges are Adapty's expected effect from teardowns and A/B tests across subscription apps — not measured lift for Spendee.
+
+**Photos.** The savings-goal photos (car, vacation, university, home, emergency fund) are free-licence images from [Unsplash](https://unsplash.com/license), picked to match each goal. They are illustrative only.
 
 **Run locally**
 
