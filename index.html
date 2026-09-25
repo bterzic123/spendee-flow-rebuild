@@ -20,11 +20,11 @@
   --sp-red:#C8261E; --sp-red-bg:#FDEEEE; --sp-red-line:#F5C6C4;
   --sp-conf-o:#FF9F2E; --sp-conf-b:#1B5CC8;
   --r-ctl:26px; --r-media:36px;
-  /* ---- the report shell (deliberately not their palette) ---- */
-  --bg:#08090B; --bg2:#0E1013; --surf:#14171B;
-  --hair:rgba(255,255,255,.07); --hair2:rgba(255,255,255,.13);
-  --ink:#F7F9FB; --ink2:#A4ACB5; --ink3:#6C757E;
-  --accent:#1DC486; --accent-lift:#4FE0A8;
+  /* ---- the report shell, in Spendee's own palette ---- */
+  --bg:#F6F6F6; --bg2:#FFFFFF; --surf:#FFFFFF;
+  --hair:rgba(35,41,50,.09); --hair2:rgba(35,41,50,.16);
+  --ink:#232932; --ink2:#4A5058; --ink3:#8A9097;
+  --accent:#1DC486; --accent-lift:#0B8F5E;
   --panel:#FFFFFF; --panel-ink:#15181B; --panel-muted:#5F666D; --panel-line:#E9ECEF;
   --accent-ink:#0B8457;
 }
@@ -39,19 +39,19 @@ a{color:inherit}
 @media(max-width:700px){.wrap{padding:0 20px}}
 
 /* ============ top bar ============ */
-.nav{position:sticky;top:0;z-index:70;background:rgba(8,9,11,.82);backdrop-filter:blur(18px) saturate(160%);
+.nav{position:sticky;top:0;z-index:70;background:rgba(246,246,246,.86);backdrop-filter:blur(18px) saturate(160%);
   border-bottom:1px solid var(--hair)}
 .nav-in{max-width:1080px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;gap:18px}
 @media(max-width:700px){.nav-in{padding:0 20px;gap:12px}}
 .nav-brand{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;letter-spacing:-.01em}
-.nav-brand .mk{width:20px;height:20px;flex:none;border-radius:6px;background:var(--accent);display:grid;place-items:center}
-.nav-brand .mk svg{width:12px;height:12px}
+.nav-brand .mk{width:26px;height:26px;flex:none;display:block}
+.nav-brand .mk svg{width:26px;height:26px;display:block}
 .nav-brand span{color:var(--ink2);font-weight:500}
 .nav-brand b{color:var(--ink);font-weight:600}
 .nav-links{margin-left:auto;display:flex;gap:2px;align-items:center}
 .nav-links button{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;color:var(--ink3);transition:.16s}
 .nav-links button:hover{color:var(--ink)}
-.nav-links button.on{color:var(--ink);background:rgba(255,255,255,.07)}
+.nav-links button.on{color:var(--ink);background:#fff;box-shadow:0 1px 4px rgba(35,41,50,.08)}
 @media(max-width:640px){.nav-brand span{display:none}}
 
 .view{display:none}
@@ -61,8 +61,11 @@ a{color:inherit}
 .hero{padding:104px 0 0;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-340px;left:50%;transform:translateX(-50%);
   width:1100px;height:640px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(29,196,134,.20),transparent 72%)}
-.hero>*{position:relative}
+  background:radial-gradient(closest-side,rgba(29,196,134,.16),transparent 72%)}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(40% 50% at 8% 20%,rgba(150,182,222,.28),transparent 70%),
+   radial-gradient(38% 45% at 92% 18%,rgba(236,190,190,.28),transparent 70%)}
+.hero>*{position:relative;z-index:1}
 .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-lift);margin-bottom:26px}
 .hero h1{font-size:76px;line-height:.98;font-weight:700;letter-spacing:-.045em;margin:0 0 24px}
 @media(max-width:820px){.hero h1{font-size:50px}.hero{padding-top:70px}}
@@ -101,14 +104,14 @@ a{color:inherit}
 
 .notes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;max-width:820px}
 @media(max-width:760px){.notes{grid-template-columns:1fr}}
-.note{background:var(--surf);border:1px solid var(--hair);border-radius:16px;padding:24px 26px}
+.note{background:var(--surf);border:1px solid var(--hair);box-shadow:0 2px 10px rgba(35,41,50,.04);border-radius:16px;padding:24px 26px}
 .note h4{font-size:15px;font-weight:700;letter-spacing:-.015em;margin:0 0 8px}
 .note p{font-size:14px;line-height:1.6;color:var(--ink2);margin:0}
 
 .ideas{display:flex;flex-direction:column;gap:0;margin-top:14px;border-top:1px solid var(--hair)}
 .idea{display:grid;grid-template-columns:52px 1fr 180px;gap:26px;align-items:start;
   padding:30px 4px;border-bottom:1px solid var(--hair);text-align:left;width:100%;transition:.18s}
-.idea:hover{background:rgba(255,255,255,.022)}
+.idea:hover{background:rgba(255,255,255,.7)}
 @media(max-width:780px){.idea{grid-template-columns:38px 1fr;gap:16px}}
 .idea .no{font-size:13px;font-weight:700;color:var(--ink3);padding-top:4px;letter-spacing:.02em}
 .idea h3{font-size:21px;line-height:1.25;font-weight:700;letter-spacing:-.024em;margin:0 0 7px}
@@ -122,7 +125,7 @@ a{color:inherit}
   font-weight:600;color:var(--accent-lift)}
 .idea .seeit svg{width:12px;height:12px}
 
-.band{background:var(--surf);border:1px solid var(--hair);border-radius:20px;padding:40px 44px;margin-top:44px;
+.band{background:var(--surf);border:1px solid var(--hair);border-radius:28px;box-shadow:0 2px 10px rgba(35,41,50,.04);padding:40px 44px;margin-top:44px;
   display:flex;align-items:center;gap:36px;flex-wrap:wrap}
 @media(max-width:700px){.band{padding:28px 24px;gap:22px}}
 .band .lab{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
@@ -134,7 +137,7 @@ a{color:inherit}
   text-transform:uppercase;font-weight:600}
 
 .cta-row{display:flex;justify-content:center;margin-top:52px}
-.bigbtn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#04180C;
+.bigbtn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;
   font-size:15px;font-weight:700;letter-spacing:-.01em;padding:15px 26px;border-radius:30px;transition:.16s}
 .bigbtn:hover{filter:brightness(1.1)}
 .bigbtn svg{width:15px;height:15px}
@@ -151,7 +154,7 @@ a{color:inherit}
 @media(max-width:1080px){.panelcol{position:static;max-height:none;border-left:none;border-top:1px solid var(--hair)}}
 
 .phone{position:relative;width:390px;height:844px;flex:none;background:#000;border:11px solid #000;
-  border-radius:46px;box-shadow:0 0 0 1.5px #2B3035,0 34px 70px -18px rgba(0,0,0,.85)}
+  border-radius:46px;box-shadow:0 0 0 1.5px #D5D9DC,0 34px 70px -22px rgba(35,41,50,.35)}
 @media(max-width:430px){.phone{zoom:.84}.phonecol{padding:20px 12px 36px}.stage{grid-template-columns:minmax(0,1fr)}}
 .phone-in{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:var(--sp-bg);color-scheme:only light}
 .island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:104px;height:30px;background:#000;
@@ -362,11 +365,11 @@ a{color:inherit}
 
 /* chips */
 .chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:470px;margin:0 auto}
-.chip{padding:7px 13px;border-radius:20px;border:1px solid #2C3136;background:#1B1F22;
-  font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:#B9C1C8;transition:.14s}
-.chip:hover{color:#E8ECEF;border-color:#3D444A}
+.chip{padding:7px 13px;border-radius:20px;border:1px solid #E1E4E6;background:#fff;
+  font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);transition:.14s}
+.chip:hover{color:var(--ink);border-color:#C9CED2}
 .chip.offer{border-style:dashed;border-color:var(--accent);color:var(--accent-lift)}
-.chip.on{background:var(--accent);border-color:var(--accent);color:#04180C;border-style:solid}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff;border-style:solid}
 .chiphint{text-align:center;font-size:11px;color:var(--ink3);margin:0;max-width:430px}
 
 /* ============ the short panel ============ */
@@ -392,7 +395,7 @@ a{color:inherit}
 <div class="nav">
   <div class="nav-in">
     <div class="nav-brand">
-      <span class="mk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5" fill="none" stroke="#04180C" stroke-width="4"/></svg></span>
+      <span class="mk"><svg viewBox="0 0 120 120" id="navLogo" aria-label="Spendee"></svg></span>
       <b>Growth Audit</b><span>· Spendee</span>
     </div>
     <div class="nav-links">
@@ -808,6 +811,7 @@ function donutSVG(el, r, w, center){
   el.innerHTML=h;
 }
 donutSVG(document.getElementById('donutMark'),46,26,true);
+donutSVG(document.getElementById('navLogo'),46,26,true);
 donutSVG(document.getElementById('spin'),48,14,false);
 (function(){ var r=52,C=2*Math.PI*r,seg=C/5,h='<circle cx="60" cy="60" r="52" fill="none" stroke="#EEF0F1" stroke-width="10"/>';
   DONUT.forEach(function(c,i){ h+='<circle cx="60" cy="60" r="52" fill="none" stroke="'+c+'" stroke-width="10" stroke-dasharray="'+(seg-3)+' '+(C-seg+3)+'" stroke-dashoffset="'+(-i*seg)+'"/>'; });
