@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<title>Growth Audit — Spendee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: only light;
+  /* ---- Spendee, extracted from their live screens ---- */
+  --sp-bg:#F6F6F6; --sp-card:#FFFFFF; --sp-line:#E4E6E8;
+  --sp-green:#1DC486; --sp-green-dk:#16A872; --sp-check:#21875A;
+  --sp-mint:#E2F2EB; --sp-mint-line:#22C58E; --sp-welcome:#16C479;
+  --sp-ink:#232932; --sp-ink2:#3B414A; --sp-txt:#4A5058; --sp-muted:#8A9097;
+  --sp-red:#C8261E; --sp-red-bg:#FDEEEE; --sp-red-line:#F5C6C4;
+  --sp-conf-o:#FF9F2E; --sp-conf-b:#1B5CC8;
+  --r-ctl:26px; --r-media:36px;
+  /* ---- the report shell (deliberately not their palette) ---- */
+  --bg:#08090B; --bg2:#0E1013; --surf:#14171B;
+  --hair:rgba(255,255,255,.07); --hair2:rgba(255,255,255,.13);
+  --ink:#F7F9FB; --ink2:#A4ACB5; --ink3:#6C757E;
+  --accent:#1DC486; --accent-lift:#4FE0A8;
+  --panel:#FFFFFF; --panel-ink:#15181B; --panel-muted:#5F666D; --panel-line:#E9ECEF;
+  --accent-ink:#0B8457;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);
+  font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+@media(max-width:700px){.wrap{padding:0 20px}}
+
+/* ============ top bar ============ */
+.nav{position:sticky;top:0;z-index:70;background:rgba(8,9,11,.82);backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid var(--hair)}
+.nav-in{max-width:1080px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;gap:18px}
+@media(max-width:700px){.nav-in{padding:0 20px;gap:12px}}
+.nav-brand{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;letter-spacing:-.01em}
+.nav-brand .mk{width:20px;height:20px;flex:none;border-radius:6px;background:var(--accent);display:grid;place-items:center}
+.nav-brand .mk svg{width:12px;height:12px}
+.nav-brand span{color:var(--ink2);font-weight:500}
+.nav-brand b{color:var(--ink);font-weight:600}
+.nav-links{margin-left:auto;display:flex;gap:2px;align-items:center}
+.nav-links button{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;color:var(--ink3);transition:.16s}
+.nav-links button:hover{color:var(--ink)}
+.nav-links button.on{color:var(--ink);background:rgba(255,255,255,.07)}
+@media(max-width:640px){.nav-brand span{display:none}}
+
+.view{display:none}
+.view.on{display:block}
+
+/* ============ hero ============ */
+.hero{padding:104px 0 0;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-340px;left:50%;transform:translateX(-50%);
+  width:1100px;height:640px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(29,196,134,.20),transparent 72%)}
+.hero>*{position:relative}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-lift);margin-bottom:26px}
+.hero h1{font-size:76px;line-height:.98;font-weight:700;letter-spacing:-.045em;margin:0 0 24px}
+@media(max-width:820px){.hero h1{font-size:50px}.hero{padding-top:70px}}
+.hero .lede{font-size:20px;line-height:1.5;font-weight:400;color:var(--ink2);max-width:600px;margin:0 auto;letter-spacing:-.012em}
+@media(max-width:820px){.hero .lede{font-size:17px}}
+.hero .meta{margin-top:30px;font-size:12.5px;color:var(--ink3);letter-spacing:.02em}
+.hero .meta b{color:var(--ink2);font-weight:600}
+
+.stats{display:flex;justify-content:center;gap:0;margin:70px auto 0;max-width:760px;
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.stat{flex:1;padding:26px 14px;text-align:center;border-left:1px solid var(--hair)}
+.stat:first-child{border-left:none}
+.stat b{display:block;font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.stat span{display:block;font-size:11.5px;color:var(--ink3);margin-top:5px;line-height:1.35}
+@media(max-width:700px){.stat b{font-size:19px}.stat{padding:18px 8px}}
+
+.fb{max-width:760px;margin:0 auto;padding:30px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:26px;text-align:left}
+@media(max-width:700px){.fb{grid-template-columns:1fr;gap:20px;padding-top:24px}}
+.fb-k{grid-column:1/-1;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink3);text-align:center;margin-bottom:-6px}
+.fb-i{display:flex;gap:12px;align-items:flex-start}
+.fb-i .tick{width:18px;height:18px;flex:none;margin-top:3px;border-radius:50%;background:rgba(29,196,134,.16);
+  display:grid;place-items:center}
+.fb-i .tick svg{width:10px;height:10px;stroke:var(--accent-lift);stroke-width:3;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
+.fb-i p{font-size:14px;line-height:1.55;color:var(--ink2);margin:0}
+.fb-i p b{color:var(--ink);font-weight:700}
+
+.sec{padding:96px 0}
+.sec-k{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.sec h2{font-size:38px;line-height:1.14;font-weight:700;letter-spacing:-.035em;margin:0 0 20px;max-width:680px}
+@media(max-width:820px){.sec h2{font-size:29px}.sec{padding:64px 0}}
+.sec p.body{font-size:17px;line-height:1.66;color:var(--ink2);max-width:640px;margin:0 0 18px;letter-spacing:-.008em}
+.sec p.body b{color:var(--ink);font-weight:600}
+.rule{height:1px;background:var(--hair);margin:0}
+
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;max-width:820px}
+@media(max-width:760px){.notes{grid-template-columns:1fr}}
+.note{background:var(--surf);border:1px solid var(--hair);border-radius:16px;padding:24px 26px}
+.note h4{font-size:15px;font-weight:700;letter-spacing:-.015em;margin:0 0 8px}
+.note p{font-size:14px;line-height:1.6;color:var(--ink2);margin:0}
+
+.ideas{display:flex;flex-direction:column;gap:0;margin-top:14px;border-top:1px solid var(--hair)}
+.idea{display:grid;grid-template-columns:52px 1fr 180px;gap:26px;align-items:start;
+  padding:30px 4px;border-bottom:1px solid var(--hair);text-align:left;width:100%;transition:.18s}
+.idea:hover{background:rgba(255,255,255,.022)}
+@media(max-width:780px){.idea{grid-template-columns:38px 1fr;gap:16px}}
+.idea .no{font-size:13px;font-weight:700;color:var(--ink3);padding-top:4px;letter-spacing:.02em}
+.idea h3{font-size:21px;line-height:1.25;font-weight:700;letter-spacing:-.024em;margin:0 0 7px}
+@media(max-width:820px){.idea h3{font-size:18px}}
+.idea p{font-size:14.5px;line-height:1.6;color:var(--ink2);margin:0;max-width:540px}
+.idea .out{text-align:right;padding-top:3px}
+@media(max-width:780px){.idea .out{grid-column:2;text-align:left;padding-top:12px}}
+.idea .out b{display:block;font-size:19px;font-weight:700;letter-spacing:-.025em;color:var(--accent-lift);white-space:nowrap}
+.idea .out span{display:block;font-size:10.5px;color:var(--ink3);margin-top:3px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.idea .seeit{display:inline-flex;align-items:center;gap:5px;margin-top:11px;font-size:12.5px;
+  font-weight:600;color:var(--accent-lift)}
+.idea .seeit svg{width:12px;height:12px}
+
+.band{background:var(--surf);border:1px solid var(--hair);border-radius:20px;padding:40px 44px;margin-top:44px;
+  display:flex;align-items:center;gap:36px;flex-wrap:wrap}
+@media(max-width:700px){.band{padding:28px 24px;gap:22px}}
+.band .lab{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.band .txt{flex:1;min-width:240px}
+.band .txt p{font-size:15.5px;line-height:1.6;color:var(--ink2);margin:0}
+.band .nums{display:flex;gap:34px}
+.band .nums div b{display:block;font-size:30px;font-weight:700;letter-spacing:-.035em;color:var(--accent-lift)}
+.band .nums div span{display:block;font-size:11px;color:var(--ink3);margin-top:2px;letter-spacing:.04em;
+  text-transform:uppercase;font-weight:600}
+
+.cta-row{display:flex;justify-content:center;margin-top:52px}
+.bigbtn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#04180C;
+  font-size:15px;font-weight:700;letter-spacing:-.01em;padding:15px 26px;border-radius:30px;transition:.16s}
+.bigbtn:hover{filter:brightness(1.1)}
+.bigbtn svg{width:15px;height:15px}
+
+.foot{border-top:1px solid var(--hair);padding:36px 0 70px;font-size:12.5px;line-height:1.6;color:var(--ink3)}
+
+/* ============ prototype stage ============ */
+.stage{display:grid;grid-template-columns:minmax(440px,1fr) minmax(400px,470px);gap:0;
+  align-items:start;min-height:calc(100vh - 58px)}
+@media(max-width:1080px){.stage{grid-template-columns:1fr}}
+.phonecol{padding:34px 24px 46px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.panelcol{border-left:1px solid var(--hair);background:var(--panel);color:var(--panel-ink);
+  min-height:calc(100vh - 58px);position:sticky;top:58px;max-height:calc(100vh - 58px);overflow-y:auto}
+@media(max-width:1080px){.panelcol{position:static;max-height:none;border-left:none;border-top:1px solid var(--hair)}}
+
+.phone{position:relative;width:390px;height:844px;flex:none;background:#000;border:11px solid #000;
+  border-radius:46px;box-shadow:0 0 0 1.5px #2B3035,0 34px 70px -18px rgba(0,0,0,.85)}
+@media(max-width:430px){.phone{zoom:.84}.phonecol{padding:20px 12px 36px}.stage{grid-template-columns:minmax(0,1fr)}}
+.phone-in{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:var(--sp-bg);color-scheme:only light}
+.island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:104px;height:30px;background:#000;
+  border-radius:16px;z-index:60;pointer-events:none}
+.sbar{position:absolute;top:0;left:0;right:0;height:50px;z-index:55;pointer-events:none;display:flex;
+  align-items:center;justify-content:space-between;padding:14px 28px 0 34px;font:700 15px/1 'Figtree',sans-serif;color:#111;transition:color .3s}
+.sbar.light{color:#fff}
+.sbar .glyphs{display:flex;gap:5px;align-items:center}
+.homebar{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:134px;height:5px;
+  border-radius:3px;background:#111;z-index:56;pointer-events:none;transition:background .3s}
+.homebar.light{background:rgba(255,255,255,.9)}
+.screenwrap{position:absolute;inset:0;overflow:hidden;background:var(--sp-bg)}
+
+/* ============ phone screens — Spendee's system, all prefixed scr-/sp- ============ */
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--sp-bg);color:var(--sp-ink);
+  font-family:'Figtree',-apple-system,sans-serif;
+  transform:translateX(100%);transition:transform .36s cubic-bezier(.32,.72,0,1);z-index:10;will-change:transform}
+.scr.is-active{transform:translateX(0);z-index:20}
+.scr.is-past{transform:translateX(-24%)}
+.scr.sheet{transform:translateY(100%)}
+.scr.sheet.is-active{transform:translateY(0);z-index:30}
+.scr.nofx{transition:none}
+.scr-top{flex:none;padding:56px 22px 0;position:relative;z-index:2}
+.scr-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 22px;scrollbar-width:none;position:relative;z-index:2}
+.scr-body::-webkit-scrollbar{display:none}
+.scr-body.dock{display:flex;flex-direction:column}
+.scr-foot{flex:none;padding:12px 22px 30px;position:relative;z-index:2}
+
+.sp-nav{display:flex;align-items:center;gap:14px;height:40px}
+.sp-back{width:40px;height:40px;flex:none;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--sp-ink);
+  box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.sp-back svg{width:18px;height:18px}
+.sp-prog{flex:1;height:6px;border-radius:3px;background:#E3E6E8;overflow:hidden}
+.sp-prog i{display:block;height:100%;background:var(--sp-green);border-radius:3px;transition:width .4s cubic-bezier(.32,.72,0,1)}
+.sp-h{font-size:27px;line-height:1.14;font-weight:800;letter-spacing:-.025em;margin:22px 0 0;text-align:center;color:var(--sp-ink)}
+.sp-sub{font-size:15px;line-height:1.4;color:var(--sp-txt);margin:9px 0 0;text-align:center;font-weight:500}
+
+.sp-btn{display:block;width:100%;height:56px;border-radius:28px;background:var(--sp-green);color:#fff;
+  font:700 19px/1 'Figtree',sans-serif;letter-spacing:-.005em;transition:filter .15s;
+  box-shadow:0 6px 16px -8px rgba(29,196,134,.7)}
+.sp-btn:hover{filter:brightness(1.05)}
+.sp-btn[disabled]{background:#BFE9D7;box-shadow:none;cursor:default}
+.sp-ghost{display:block;width:100%;height:40px;margin-top:6px;font:800 16px/1 'Figtree',sans-serif;color:var(--sp-ink2)}
+.sp-helper{font-size:13px;line-height:1.4;color:var(--sp-muted);text-align:center;margin:0 0 10px;font-weight:500}
+.sp-helper b{color:var(--sp-ink2);font-weight:700}
+
+/* confetti */
+.sp-fx{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.sp-fx i{position:absolute;display:block;border-radius:2px}
+
+/* welcome */
+.scr--welcome{background:#fff}
+.sp-wtop{background:var(--sp-welcome);padding-top:62px;border-radius:0 0 var(--r-media) var(--r-media);overflow:hidden;margin:0 -22px}
+.sp-wtop img{display:block;width:100%;height:auto;margin-top:-2px}
+.sp-wh{font-size:29px;line-height:1.14;font-weight:800;letter-spacing:-.025em;text-align:center;margin:26px 8px 0;color:var(--sp-ink)}
+.sp-proofimg{display:block;width:100%;height:auto;margin:22px 0 0}
+.sp-signin{font-size:15.5px;color:var(--sp-muted);text-align:center;margin-top:16px;font-weight:500}
+.sp-signin b{color:var(--sp-ink2);font-weight:800}
+
+/* goal rows — their check circles */
+.sp-rows{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+.sp-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fff;border:2.5px solid transparent;
+  border-radius:22px;padding:17px 16px;font:500 16px/1.3 'Figtree',sans-serif;color:var(--sp-txt);transition:.16s;
+  box-shadow:0 2px 10px rgba(0,0,0,.035)}
+.sp-row b{font-weight:800;color:var(--sp-ink)}
+.sp-row.on{border-color:var(--sp-mint-line);background:var(--sp-mint)}
+.sp-ck{width:30px;height:30px;flex:none;border-radius:50%;border:2px solid #CDD2D6;display:grid;place-items:center;transition:.16s}
+.sp-ck svg{width:15px;height:15px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.sp-row.on .sp-ck{background:var(--sp-check);border-color:var(--sp-check)}
+.sp-row.on .sp-ck svg{opacity:1}
+
+/* bank logo pills — their tiles on their green */
+.sp-bankpanel{background:var(--sp-welcome);border-radius:var(--r-media);padding:18px 14px;margin-top:22px}
+.sp-banks{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.sp-pill{position:relative;height:52px;border-radius:26px;background:#fff;display:grid;place-items:center;
+  border:3px solid transparent;transition:.16s;box-shadow:0 3px 8px rgba(0,0,0,.08)}
+.sp-pill img{max-height:24px;max-width:76%;display:block}
+.sp-pill.wide{grid-column:1/-1}
+.sp-pill.txt{font:800 15px/1 'Figtree',sans-serif;color:var(--sp-ink2)}
+.sp-pill.on{border-color:#0E6E47;box-shadow:0 0 0 3px rgba(255,255,255,.55),0 3px 8px rgba(0,0,0,.1)}
+.sp-pill .sp-tick{position:absolute;top:-7px;right:-4px;width:22px;height:22px;border-radius:50%;background:var(--sp-check);
+  display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.16s;border:2px solid #fff}
+.sp-pill .sp-tick svg{width:11px;height:11px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.sp-pill.on .sp-tick{opacity:1;transform:scale(1)}
+
+/* wheel */
+.sp-wheelwrap{position:relative;margin:34px auto 0;width:100%;max-width:300px;height:220px;display:flex;align-items:stretch}
+.sp-wheelbar{position:absolute;left:0;right:0;top:88px;height:44px;border-radius:14px;background:var(--sp-mint);
+  border:2px solid var(--sp-mint-line);pointer-events:none}
+.sp-wheel{position:relative;flex:1;height:220px;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);
+          mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+.sp-wheel::-webkit-scrollbar{display:none}
+.sp-wheel .sp-sp{height:88px}
+.sp-wheel .sp-it{height:44px;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;
+  font:700 24px/1 'Figtree',sans-serif;color:var(--sp-ink);letter-spacing:-.01em}
+.sp-unit{flex:none;width:110px;display:flex;align-items:center;font:700 18px/1 'Figtree',sans-serif;color:var(--sp-check);position:relative;z-index:2}
+.sp-note{margin-top:26px;background:#fff;border-radius:20px;padding:15px 16px;font-size:14px;line-height:1.45;color:var(--sp-txt);text-align:center}
+.sp-note b{color:var(--sp-ink);font-weight:800}
+
+/* loader */
+.scr--load{background:linear-gradient(170deg,#22C584,#1BB577 60%,#15A56C)}
+.sp-loadwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
+.sp-spin{width:112px;height:112px;margin-bottom:24px;animation:spin 2.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sp-load-h{font-size:23px;font-weight:800;letter-spacing:-.02em;color:#fff;text-align:center;margin:0 0 20px}
+.sp-lsteps{width:100%;max-width:290px;display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
+.sp-ls{display:flex;align-items:center;gap:11px;font-size:15px;font-weight:600;color:rgba(255,255,255,.6);transition:.35s}
+.sp-ls.on{color:#fff}
+.sp-ls .d{width:22px;height:22px;flex:none;border-radius:50%;border:2px solid rgba(255,255,255,.5);display:grid;place-items:center;transition:.35s}
+.sp-ls.on .d{background:#fff;border-color:#fff}
+.sp-ls .d svg{width:12px;height:12px;stroke:var(--sp-green-dk);stroke-width:3.2;fill:none;opacity:0;stroke-linecap:round;stroke-linejoin:round}
+.sp-ls.on .d svg{opacity:1}
+.sp-quote{width:100%;max-width:300px;background:rgba(255,255,255,.16);border-radius:22px;padding:16px 18px;min-height:104px}
+.sp-quote p{font-size:14px;line-height:1.5;color:#fff;font-weight:500}
+.sp-quote b{display:block;margin-top:9px;font-size:13px;font-weight:800;color:rgba(255,255,255,.85)}
+.sp-qd{display:flex;gap:5px;justify-content:center;margin-top:12px}
+.sp-qd i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);transition:.3s}
+.sp-qd i.on{background:#fff;width:16px;border-radius:3px}
+
+/* payoff */
+.sp-paycard{background:#fff;border-radius:var(--r-media);padding:22px 18px 18px;margin-top:20px;text-align:center}
+.sp-ring{position:relative;width:176px;height:176px;margin:0 auto}
+.sp-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.sp-ring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sp-ring .c b{font-size:33px;font-weight:900;letter-spacing:-.03em;color:var(--sp-ink);line-height:1}
+.sp-ring .c span{font-size:13px;font-weight:700;color:var(--sp-muted);margin-top:5px}
+.sp-paymeta{font-size:15px;color:var(--sp-txt);margin-top:14px;font-weight:500}
+.sp-paymeta b{color:var(--sp-ink);font-weight:800}
+.sp-lab{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--sp-muted);margin:18px 0 9px;text-transform:uppercase}
+.sp-minis{display:flex;flex-wrap:wrap;gap:8px}
+.sp-mini{height:38px;padding:0 14px;border-radius:19px;background:#fff;display:flex;align-items:center;gap:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);font:800 13px/1 'Figtree',sans-serif;color:var(--sp-ink2)}
+.sp-mini img{height:17px;display:block}
+.sp-lock{display:flex;align-items:center;gap:12px;margin-top:16px;background:#fff;border:1.5px dashed #CFD5D9;border-radius:20px;padding:13px 14px}
+.sp-lock svg{width:20px;height:20px;flex:none;stroke:var(--sp-check);stroke-width:2;fill:none}
+.sp-lock div{font-size:13px;line-height:1.4;color:var(--sp-txt)}
+.sp-lock div b{display:block;color:var(--sp-ink);font-size:14px;font-weight:800}
+
+/* paywall */
+.scr--pay{background:#F2F2F3}
+.sp-paybg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+   radial-gradient(60% 40% at 0% 30%,rgba(150,182,222,.55),transparent 70%),
+   radial-gradient(55% 35% at 60% 36%,rgba(236,190,190,.45),transparent 70%),
+   radial-gradient(50% 30% at 100% 22%,rgba(170,212,190,.45),transparent 70%),
+   linear-gradient(180deg,#E6E8E9 0%,#EFEDED 45%,#F4F4F4 70%)}
+.scr--pay .scr-top{padding:50px 20px 0}
+.sp-proofcard{background:#fff;border-radius:20px;padding:6px 14px;margin-top:10px}
+.scr--pay .sp-proofimg{width:100% !important;margin:0 !important}
+.scr--pay .scr-body{padding:0 20px}
+.scr--pay .scr-foot{padding:10px 20px 26px;background:linear-gradient(180deg,rgba(244,244,244,0),#F4F4F4 18%)}
+.sp-x{position:absolute;right:20px;top:52px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.45);
+  border:1px solid rgba(255,255,255,.6);display:grid;place-items:center;color:#2A2F36}
+.sp-x svg{width:20px;height:20px}
+.sp-donut{display:block;width:48px;height:48px;margin:0 auto}
+.sp-payh{font-size:24.5px;line-height:1.12;font-weight:800;letter-spacing:-.028em;text-align:center;margin:12px 6px 0;color:var(--sp-ink)}
+.sp-paysub{font-size:15px;font-weight:600;color:var(--sp-txt);text-align:center;margin-top:6px}
+.sp-feat{margin-top:8px;background:rgba(255,255,255,.55);border-radius:28px;padding:12px 15px;display:flex;flex-direction:column;gap:8px}
+.sp-f{display:flex;align-items:center;gap:12px;font-size:14.5px;line-height:1.28;color:var(--sp-txt)}
+.sp-f b{font-weight:800;color:var(--sp-ink)}
+.sp-f .sp-ck{width:26px;height:26px;background:var(--sp-check);border-color:var(--sp-check)}
+.sp-f .sp-ck svg{opacity:1;width:13px;height:13px}
+.sp-plans{display:flex;flex-direction:column;gap:17px;margin-top:20px}
+.sp-plan{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;
+  background:#fff;border:2.5px solid var(--sp-line);border-radius:24px;padding:13px 16px 11px 20px;transition:.16s}
+.sp-plan.on{background:var(--sp-mint);border-color:var(--sp-mint-line)}
+.sp-plan .t{display:block;font-size:17px;font-weight:600;color:var(--sp-ink)}
+.sp-plan .s{display:block;font-size:14.5px;font-weight:500;color:var(--sp-txt);margin-top:4px}
+.sp-plan .s em{font-style:normal;font-weight:800;color:#18B27C}
+.sp-radio{width:30px;height:30px;flex:none;border-radius:50%;border:2.5px solid #CDD2D6;display:grid;place-items:center;transition:.16s}
+.sp-plan.on .sp-radio{background:var(--sp-green);border-color:var(--sp-green)}
+.sp-radio i{width:10px;height:10px;border-radius:50%;background:#fff;opacity:0}
+.sp-plan.on .sp-radio i{opacity:1}
+.sp-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fff;
+  border:2px dotted var(--sp-mint-line);border-radius:12px;padding:3px 10px;display:flex;align-items:center;gap:6px;
+  font:800 13.5px/1.2 'Figtree',sans-serif;color:var(--sp-ink)}
+.sp-badge svg{width:15px;height:15px;stroke:var(--sp-mint-line);stroke-width:2.4;fill:none}
+.sp-trust{font-size:13px;font-weight:600;color:var(--sp-txt);text-align:center;margin:0 0 9px}
+.sp-legal{display:flex;justify-content:center;gap:18px;margin-top:10px}
+.sp-legal a{font-size:12px;color:var(--sp-muted);text-decoration:none;font-weight:500}
+
+/* offer — their Limited Time Offer */
+.scr--offer{background:var(--sp-bg)}
+.scr--offer .sp-x{background:#fff;border:none;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.sp-oh{font-size:35px;line-height:1.05;font-weight:800;letter-spacing:-.025em;text-align:center;color:#111;margin:66px 0 0;font-family:'Figtree',sans-serif}
+.sp-ocard{background:#FCFCFC;border-radius:40px;margin-top:22px;padding:24px 16px 20px;text-align:center}
+.sp-ocard img{display:block;width:92px;height:auto;margin:0 auto}
+.sp-off{font-size:62px;line-height:1;font-weight:800;letter-spacing:-.02em;color:#111;margin-top:18px}
+.sp-ol{font-size:15px;color:var(--sp-txt);margin-top:12px;font-weight:500;line-height:1.45}
+.sp-ol s{color:var(--sp-txt)}
+.sp-ends{display:inline-flex;align-items:center;gap:7px;margin-top:20px;background:var(--sp-red-bg);border:1.5px solid var(--sp-red-line);
+  border-radius:16px;padding:6px 14px;font:800 15px/1 'Figtree',sans-serif;color:var(--sp-red)}
+.sp-ends svg{width:16px;height:16px;stroke:var(--sp-red);stroke-width:2.2;fill:none}
+.sp-cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.sp-cd div{border:1.5px solid #E7E9EB;border-radius:18px;padding:10px 0 8px;background:linear-gradient(180deg,#fff,#F7F8F8)}
+.sp-cd b{display:block;font-size:30px;font-weight:800;color:#111;line-height:1.05}
+.sp-cd span{display:block;font-size:12px;font-weight:800;color:#222;margin-top:3px}
+.scr--offer .sp-btn{font-weight:600;font-size:18px}
+
+/* connect */
+.sp-conn{display:flex;flex-direction:column;gap:11px;margin-top:24px}
+.sp-crow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border-radius:22px;padding:0 16px;height:66px;
+  box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.sp-crow img{max-height:24px;max-width:150px;display:block}
+.sp-crow span{font:800 13px/1 'Figtree',sans-serif;color:var(--sp-check)}
+.sp-crow .nm{font:800 16px/1 'Figtree',sans-serif;color:var(--sp-ink2)}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:470px;margin:0 auto}
+.chip{padding:7px 13px;border-radius:20px;border:1px solid #2C3136;background:#1B1F22;
+  font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:#B9C1C8;transition:.14s}
+.chip:hover{color:#E8ECEF;border-color:#3D444A}
+.chip.offer{border-style:dashed;border-color:var(--accent);color:var(--accent-lift)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#04180C;border-style:solid}
+.chiphint{text-align:center;font-size:11px;color:var(--ink3);margin:0;max-width:430px}
+
+/* ============ the short panel ============ */
+.pn{padding:30px 30px 60px}
+.pn-n{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.pn-n.ctx{color:var(--panel-muted)}
+.pn-t{font-size:23px;line-height:1.18;font-weight:700;letter-spacing:-.028em;margin:8px 0 0;color:var(--panel-ink)}
+.pn-hyp{font-size:15px;line-height:1.62;color:#2E353B;margin:16px 0 0}
+.pn-hyp b{font-weight:700;color:var(--panel-ink)}
+.pn-out{margin-top:22px;border-top:1px solid var(--panel-line);padding-top:18px}
+.pn-out .lab{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--panel-muted)}
+.pn-out .v{font-size:31px;font-weight:700;letter-spacing:-.035em;color:var(--accent-ink);margin-top:7px;line-height:1}
+.pn-kept{margin-top:22px;font-size:12.5px;line-height:1.55;color:var(--panel-muted)}
+.pn-kept b{color:#2E353B;font-weight:700}
+.pn-foot{font-size:11.5px;line-height:1.55;color:var(--panel-muted);border-top:1px solid var(--panel-line);
+  padding-top:14px;margin-top:26px}
+.pn-sep{height:1px;background:var(--panel-line);margin:26px 0}
+.hidden{display:none !important}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-brand">
+      <span class="mk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5" fill="none" stroke="#04180C" stroke-width="4"/></svg></span>
+      <b>Growth Audit</b><span>· Spendee</span>
+    </div>
+    <div class="nav-links">
+      <button class="on" data-view="over">Overview</button>
+      <button data-view="proto">Prototype</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= OVERVIEW ======================= -->
+<div class="view on" id="view-over">
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Growth Audit · September 2026</div>
+    <h1>Spendee</h1>
+    <p class="lede">Five ideas to unlock more revenue from the traffic you already have.</p>
+    <div class="meta">Prepared by <b>Adapty</b> · based on your live iOS flow and your App Store listing</div>
+    <div class="stats">
+      <div class="stat"><b>30,000+</b><span>apps run subscriptions<br>on Adapty</span></div>
+      <div class="stat"><b>5</b><span>ideas, each rebuilt<br>as a working screen</span></div>
+      <div class="stat"><b>0</b><span>design changes<br>to your art direction</span></div>
+    </div>
+
+    <div class="fb">
+      <div class="fb-k">Built in Adapty Flow Builder</div>
+      <div class="fb-i">
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <p><b>Millions of dollars</b> in subscription revenue pass through Flow Builder every month.</p>
+      </div>
+      <div class="fb-i">
+        <span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <p><b>Nearly 500 apps</b> actively build their paywalls and onboarding in it — plenty of them past $100K MRR.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap">
+    <div class="sec-k">What this is</div>
+    <h2>We opened Spendee the way a new user does, then rebuilt the parts we think are leaving money on the table.</h2>
+    <p class="body">Adapty powers subscriptions for <b>30,000+ apps</b>, so we get to see what actually moves conversion and ARPU across the market rather than inside one app. We pointed that at Spendee: installed it, went through the first screens, read your App Store listing and your pricing page, and looked for gaps between what you already have and what you currently show people.</p>
+    <p class="body">What follows is five ideas — not fifteen. Each one is a hypothesis you can A/B test, and each one is built into a clickable prototype so you can see it rather than imagine it. <b>The prototype uses your design, not ours.</b></p>
+
+    <div class="notes">
+      <div class="note">
+        <h4>We did not redesign your app</h4>
+        <p>Every screen in the prototype is yours — your green, your bank-logo tiles, your check circles, your plan card, your offer screen. Only the order changed, plus a few things you already own but do not show at the right moment. This is not a design pitch.</p>
+      </div>
+      <div class="note">
+        <h4>You may have tested some of this</h4>
+        <p>We are working from the outside, so we cannot see your experiment history. If one of these is something you have already run, tell us — we will go deeper on the rest rather than repeat it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<div class="sec">
+  <div class="wrap">
+    <div class="sec-k">The five ideas</div>
+    <h2>Ranked by what we would test first.</h2>
+    <p class="body">Each one links straight to the screen in the prototype.</p>
+
+    <div class="ideas">
+      <button class="idea" data-jump="welcome">
+        <span class="no">01</span>
+        <span>
+          <h3>Show the app before the price</h3>
+          <p>Right now a new install opens on the 39,99 € yearly paywall. Close it and a monthly-trial sheet slides up, then a 20% offer with a timer. Only after that does anyone reach your welcome screen and its Get Started button.</p>
+          <span class="seeit">See the screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+        <span class="out"><b>CR +10–20%</b><span>to purchase</span></span>
+      </button>
+
+      <button class="idea" data-jump="payoff">
+        <span class="no">02</span>
+        <span>
+          <h3>Turn three taps into a daily budget</h3>
+          <p>Ask what matters, which banks they use and how much they want to spend a month. Then show what that means per day, with their banks lined up to connect. It is the same sum your budgets already do in the app.</p>
+          <span class="seeit">See the screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+        <span class="out"><b>CR +10–20%</b><span>to purchase</span></span>
+      </button>
+
+      <button class="idea" data-jump="paywall">
+        <span class="no">03</span>
+        <span>
+          <h3>Put their budget and your awards on the paywall</h3>
+          <p>The headline says “Take Control of Your Money” to everyone. Your Forbes Best Budgeting App, 4.8 and Top 10 Finance tiles sit on the welcome screen, well away from the moment someone decides.</p>
+          <span class="seeit">See the screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+        <span class="out"><b>CR +15–20%</b><span>to purchase</span></span>
+      </button>
+
+      <button class="idea" data-jump="paywall">
+        <span class="no">04</span>
+        <span>
+          <h3>Show both plans, and the saving</h3>
+          <p>Monthly only appears in a sheet after someone closes the paywall. And 39,99 € a year is never shown as 3,33 € a month, or as 52% less than paying 6,99 € monthly.</p>
+          <span class="seeit">See the screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+        <span class="out"><b>ARPU +10–15%</b><span>annual mix</span></span>
+      </button>
+
+      <button class="idea" data-jump="offer">
+        <span class="no">05</span>
+        <span>
+          <h3>One offer on close, not two</h3>
+          <p>Your 20% offer at 29,99 € is a real price and a good screen. Today it arrives straight after the monthly sheet, so people say no twice before they have seen the app. Let it be the only second chance.</p>
+          <span class="seeit">See the screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+        <span class="out"><b>ARPU +10–15%</b><span>second chance</span></span>
+      </button>
+    </div>
+
+    <div class="band">
+      <div class="txt">
+        <div class="lab">Potential outcome</div>
+        <p>Run together, these five move the same funnel at three points — when the price appears, what the paywall says, and what happens when someone says no.</p>
+      </div>
+      <div class="nums">
+        <div><b>+25%</b><span>CR to purchase</span></div>
+        <div><b>+30%</b><span>ARPU</span></div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <button class="bigbtn" data-view="proto">Open the prototype
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="wrap">
+    Impact ranges are Adapty's expected effect from teardowns and A/B tests across subscription apps — not measured lift for Spendee. Every price, rating, quote and feature line here and in the prototype comes from Spendee's own App Store listing, website, pricing page and in-app screens.
+  </div>
+</div>
+</div><!-- /view-over -->
+
+<!-- ======================= PROTOTYPE ======================= -->
+<div class="view" id="view-proto">
+<div class="stage">
+  <div class="phonecol">
+    <div class="phone">
+      <div class="phone-in">
+        <div class="island"></div>
+        <div class="sbar" id="sbar">
+          <span>9:41</span>
+          <span class="glyphs">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7.5" width="3" height="3.5" rx="1"/><rect x="4.5" y="5.5" width="3" height="5.5" rx="1"/><rect x="9" y="3" width="3" height="8" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 10.5 5.6 7.9a3.4 3.4 0 0 1 4.8 0L8 10.5Zm0-5.6a6.4 6.4 0 0 0-4.5 1.9L1.7 4.9a9 9 0 0 1 12.6 0l-1.8 1.9A6.4 6.4 0 0 0 8 4.9Z"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".6" y=".6" width="20" height="10.8" rx="3" stroke="currentColor" stroke-opacity=".5"/><rect x="2.2" y="2.2" width="16.5" height="7.6" rx="1.8" fill="currentColor"/><path d="M22.3 4.1v3.8a2 2 0 0 0 0-3.8Z" fill="currentColor" fill-opacity=".5"/></svg>
+          </span>
+        </div>
+        <div class="homebar" id="homebar"></div>
+        <div class="screenwrap">
+
+<!-- WELCOME -->
+<section class="scr scr--welcome" data-id="welcome" data-light="1">
+  <div class="scr-top" style="padding:0"></div>
+  <div class="scr-body">
+    <div class="sp-wtop"><img src="img/welcome-logos.png" alt="Supported banks: PayPal, HSBC, Chase, Deutsche Bank, Barclays, Revolut, Wise, Bank of America, ING, mBank, Česká spořitelna and more"></div>
+    <h2 class="sp-wh">We&#39;ve been helping with money for 11 years</h2>
+    <img class="sp-proofimg" src="img/proof.png" alt="Forbes Best Budgeting App · 4.8 App Store · Top 10 Finance app">
+  </div>
+  <div class="scr-foot">
+    <button class="sp-btn" data-go="goal">Get Started</button>
+    <p class="sp-signin">Have an account? <b>Sign In</b></p>
+  </div>
+</section>
+
+<!-- GOAL -->
+<section class="scr" data-id="goal">
+  <div class="scr-top">
+    <div class="sp-nav">
+      <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="sp-prog"><i style="width:33%"></i></div>
+    </div>
+    <h2 class="sp-h">What do you want to<br>get on top of?</h2>
+    <p class="sp-sub">Pick all that apply.</p>
+  </div>
+  <div class="scr-body">
+    <div class="sp-rows" id="goalList">
+      <button class="sp-row" data-v="banks"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Connect my <b>banks, cash &amp; investments</b></span></button>
+      <button class="sp-row" data-v="networth"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>See my <b>net worth</b> in one place</span></button>
+      <button class="sp-row" data-v="track"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Auto-track</b> spending, income &amp; subscriptions</span></button>
+      <button class="sp-row" data-v="budget"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Smart budgets</b> &amp; shared wallets</span></button>
+    </div>
+  </div>
+  <div class="scr-foot">
+    <button class="sp-btn" id="goalBtn" data-go="banks">Continue</button>
+  </div>
+</section>
+
+<!-- BANKS -->
+<section class="scr" data-id="banks">
+  <div class="scr-top">
+    <div class="sp-nav">
+      <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="sp-prog"><i style="width:66%"></i></div>
+    </div>
+    <h2 class="sp-h">Where do you keep<br>your money?</h2>
+  </div>
+  <div class="scr-body">
+    <div class="sp-bankpanel"><div class="sp-banks" id="bankGrid"></div></div>
+    <div style="height:10px"></div>
+  </div>
+  <div class="scr-foot">
+    <p class="sp-helper" id="bankCount">2 selected</p>
+    <button class="sp-btn" id="bankBtn" data-go="budget">Continue</button>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section class="scr" data-id="budget">
+  <div class="scr-top">
+    <div class="sp-nav">
+      <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="sp-prog"><i style="width:100%"></i></div>
+    </div>
+    <h2 class="sp-h">How much do you want<br>to spend a month?</h2>
+    <p class="sp-sub">Your spending budget for the month.</p>
+  </div>
+  <div class="scr-body">
+    <div class="sp-wheelwrap">
+      <div class="sp-wheelbar"></div>
+      <div class="sp-wheel" id="wheel"></div>
+      <div class="sp-unit">€ / month</div>
+    </div>
+    <p class="sp-note">You can change it any time in <b>Budgets</b>.</p>
+  </div>
+  <div class="scr-foot">
+    <button class="sp-btn" data-go="loader">Set my budget</button>
+  </div>
+</section>
+
+<!-- LOADER -->
+<section class="scr scr--load" data-id="loader" data-light="1">
+  <div class="scr-top" style="padding-top:0"></div>
+  <div class="scr-body">
+    <div class="sp-loadwrap">
+      <svg class="sp-spin" viewBox="0 0 120 120" id="spin"></svg>
+      <h2 class="sp-load-h">Setting up your Spendee…</h2>
+      <div class="sp-lsteps" id="loadSteps">
+        <div class="sp-ls"><span class="d"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">—</span></div>
+        <div class="sp-ls"><span class="d"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">—</span></div>
+        <div class="sp-ls"><span class="d"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">—</span></div>
+      </div>
+      <div class="sp-quote"><p id="qText">—</p><b id="qWho">—</b></div>
+      <div class="sp-qd" id="qDots"><i class="on"></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+  <div class="scr-foot"></div>
+</section>
+
+<!-- PAYOFF -->
+<section class="scr" data-id="payoff">
+  <div class="scr-top">
+    <div class="sp-nav">
+      <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    </div>
+    <h2 class="sp-h" style="margin-top:14px">Your budget is ready</h2>
+  </div>
+  <div class="scr-body">
+    <div class="sp-paycard">
+      <div class="sp-ring">
+        <svg viewBox="0 0 120 120" id="ring"></svg>
+        <div class="c"><b id="perDay">26,67 €</b><span>to spend a day</span></div>
+      </div>
+      <p class="sp-paymeta" id="payMeta"><b>800 €</b> a month ÷ 30 days in September</p>
+    </div>
+    <div class="sp-lab" id="bankLab">Ready to connect</div>
+    <div class="sp-minis" id="payBanks"></div>
+    <div class="sp-lock">
+      <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <div><b>Bank sync is in Premium</b>Free Spendee Basic covers 1 cash wallet and 1 budget.</div>
+    </div>
+    <div style="height:12px"></div>
+  </div>
+  <div class="scr-foot">
+    <button class="sp-btn" data-go="paywall">Continue</button>
+  </div>
+</section>
+
+<!-- PAYWALL -->
+<section class="scr scr--pay" data-id="paywall">
+  <div class="sp-paybg"></div>
+  <div class="sp-fx" id="fxPay"></div>
+  <div class="scr-top">
+    <button class="sp-x" id="payClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <svg class="sp-donut" viewBox="0 0 120 120" id="donutMark"></svg>
+    <h2 class="sp-payh" id="payH">Take Control of Your 800 € Budget – Instantly!</h2>
+    <p class="sp-paysub" id="paySub">Start now for 39,99 € per year</p>
+  </div>
+  <div class="scr-body">
+    <div class="sp-proofcard"><img class="sp-proofimg" src="img/proof.png" alt="Forbes Best Budgeting App · 4.8 App Store · Top 10 Finance app"></div>
+    <div class="sp-feat" id="featList"></div>
+    <div class="sp-plans" id="planList">
+      <button class="sp-plan" data-v="year">
+        <span class="sp-badge"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Best value · save 52%</span>
+        <span><span class="t">Yearly</span><span class="s"><em>3,33 € / month</em>, billed 39,99 € a year</span></span>
+        <span class="sp-radio"><i></i></span>
+      </button>
+      <button class="sp-plan" data-v="month">
+        <span class="sp-badge"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>7 days free</span>
+        <span><span class="t">Monthly</span><span class="s"><em>7 days free</em>, 6,99 € / month</span></span>
+        <span class="sp-radio"><i></i></span>
+      </button>
+    </div>
+    <div style="height:6px"></div>
+  </div>
+  <div class="scr-foot">
+    <p class="sp-trust" id="payTrust">Billed 39,99 € today · cancel anytime in Settings</p>
+    <button class="sp-btn" id="payCta">Start Now – 39,99 € / year</button>
+    <div class="sp-legal"><a>Terms of Use</a><a>Privacy Policy</a><a>Restore</a></div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="scr scr--offer sheet" data-id="offer">
+  <div class="sp-fx" id="fxOffer"></div>
+  <div class="scr-top" style="padding-top:0">
+    <button class="sp-x" id="offClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <h2 class="sp-oh" style="margin-top:118px">Limited Time Offer</h2>
+  </div>
+  <div class="scr-body">
+    <div class="sp-ocard">
+      <img src="img/gift.png" alt="">
+      <div class="sp-off">20% OFF</div>
+      <p class="sp-ol">Spendee Premium only €2.50/month<br>Billed annually at 29,99 € <s>39,99 €</s></p>
+      <span class="sp-ends"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Offer ends soon</span>
+      <div class="sp-cd">
+        <div><b>0</b><span>Days</span></div>
+        <div><b>0</b><span>Hours</span></div>
+        <div><b id="cdM">05</b><span>Min</span></div>
+        <div><b id="cdS">00</b><span>Sec</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scr-foot">
+    <button class="sp-btn" id="offerCta">Claim Offer Now</button>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="scr" data-id="connect">
+  <div class="scr-top">
+    <h2 class="sp-h" style="margin-top:34px">Connect your first bank</h2>
+    <p class="sp-sub">Your transactions come in and sort themselves into categories.</p>
+  </div>
+  <div class="scr-body">
+    <div class="sp-conn" id="connList"></div>
+  </div>
+  <div class="scr-foot">
+    <button class="sp-btn" id="connCta" data-go="welcome">Connect Revolut</button>
+    <button class="sp-ghost" data-go="welcome">Add a cash wallet instead</button>
+  </div>
+</section>
+
+        </div>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+    <p class="chiphint">Jump to any screen — answers already filled in.</p>
+  </div>
+  <div class="panelcol"><div class="pn" id="panel"></div></div>
+</div>
+</div><!-- /view-proto -->
+
+<script>
+/* ---- state, pre-filled so every jump lands warm ---- */
+var S = { goals:['banks','budget'], banks:['revolut','ing'], budget:800, plan:'year' };
+var BANKS = [
+  {k:'revolut',n:'Revolut',img:'img/revolut.png'}, {k:'ing',n:'ING',img:'img/ing.png'},
+  {k:'paypal',n:'PayPal',img:'img/paypal.png'}, {k:'deutsche',n:'Deutsche Bank',img:'img/deutsche.png'},
+  {k:'barclays',n:'Barclays',img:'img/barclays.png'}, {k:'hsbc',n:'HSBC',img:'img/hsbc.png'},
+  {k:'mbank',n:'mBank',img:'img/mbank.png'}, {k:'ceska',n:'Česká spořitelna',img:'img/ceska.png'},
+  {k:'chase',n:'Chase',img:'img/chase.png'}, {k:'inbank',n:'Inbank',img:'img/inbank.png'},
+  {k:'bofa',n:'Bank of America',img:'img/bofa.png',wide:true},
+  {k:'cash',n:'Cash only',txt:true,wide:true}
+];
+var BANK = {}; BANKS.forEach(function(b){ BANK[b.k]=b; });
+var GOALS = {
+  banks:   {h:'Connect your <b>banks, cash &amp; investments</b>', s:'bank sync'},
+  networth:{h:'See your <b>net worth</b> in one place', s:'net worth'},
+  track:   {h:'<b>Auto-track</b> spending, income &amp; subscriptions', s:'auto-tracking'},
+  budget:  {h:'<b>Smart budgets</b> &amp; shared wallets', s:'budgets'}
+};
+var GOAL_ORDER = ['banks','networth','track','budget'];
+var QUOTES = [
+  ['The app works intuitively, it makes it super easy to control your money. It helps me to develop healthy spending habits.','Roy'],
+  ['I am using this app for more than two years and I could not be happier with the service I got.','Marek'],
+  ['I’ve tried other money tracking apps before Spendee, but I choose to stick to this because of its simplicity and intuitive design.','Harnet'],
+  ['The fact that it is cross-platform has made my life easier. I am always in control with my finances.','Paolo']
+];
+var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var DONUT = ['#E8B53A','#D5528C','#2E9E5B','#D2424A','#2F9CD6'];
+
+function eur(n,dec){ var s = dec ? n.toFixed(2).replace('.',',') : String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); return s+' €'; }
+function joinNames(a){ return a.length<2 ? (a[0]||'') : a.slice(0,-1).join(', ')+' and '+a[a.length-1]; }
+function realBanks(){ return S.banks.filter(function(k){ return k!=='cash'; }); }
+
+/* ---- donut marks (their logo, redrawn) ---- */
+function donutSVG(el, r, w, center){
+  var C=2*Math.PI*r, seg=C/5, h='';
+  DONUT.forEach(function(c,i){ h+='<circle cx="60" cy="60" r="'+r+'" fill="none" stroke="'+c+'" stroke-width="'+w+'" stroke-dasharray="'+(seg-1.5)+' '+(C-seg+1.5)+'" stroke-dashoffset="'+(-i*seg)+'" transform="rotate(-90 60 60)"/>'; });
+  if(center){ h+='<circle cx="60" cy="60" r="'+(r-w/2-1)+'" fill="#E5E7E9"/><text x="60" y="75" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="44" fill="#3A4047">$</text>'; }
+  el.innerHTML=h;
+}
+donutSVG(document.getElementById('donutMark'),46,26,true);
+donutSVG(document.getElementById('spin'),48,14,false);
+(function(){ var r=52,C=2*Math.PI*r,seg=C/5,h='<circle cx="60" cy="60" r="52" fill="none" stroke="#EEF0F1" stroke-width="10"/>';
+  DONUT.forEach(function(c,i){ h+='<circle cx="60" cy="60" r="52" fill="none" stroke="'+c+'" stroke-width="10" stroke-dasharray="'+(seg-3)+' '+(C-seg+3)+'" stroke-dashoffset="'+(-i*seg)+'"/>'; });
+  document.getElementById('ring').innerHTML=h; })();
+
+/* ---- confetti, their orange and blue ---- */
+function confetti(id, bits){
+  var el=document.getElementById(id), h='';
+  bits.forEach(function(b){ h+='<i style="left:'+b[0]+'%;top:'+b[1]+'%;width:'+b[2]+'px;height:'+b[3]+'px;background:'+b[4]+';transform:rotate('+b[5]+'deg);opacity:'+(b[6]||1)+'"></i>'; });
+  el.innerHTML=h;
+}
+var O='var(--sp-conf-o)', Bl='var(--sp-conf-b)';
+confetti('fxOffer',[[4,1,22,16,O,-14],[29,0,12,10,Bl,8],[58,14,18,20,O,10],[57,26,3,14,Bl,-25],[33,23,20,18,O,24],[87,40,12,14,'#FAD9B4',8],[1,48,10,20,Bl,0],[0,70,12,4,Bl,-8],[28,57,16,14,'#DDE6F5',30],[60,79,18,16,Bl,40],[55,86,4,22,O,-50],[4,88,3,16,Bl,-55],[84,90,3,14,O,-50],[16,96,22,8,Bl,-4],[36,96,12,26,Bl,-30],[70,96,8,18,Bl,-30]]);
+confetti('fxPay',[[55,10,18,12,'#9DB3D6',24,.6],[57,17,20,20,'#E8B98E',10,.55],[86,42,12,14,'#E8B98E',8,.5],[85,55,16,6,'#E8B98E',-10,.5],[26,57,14,10,'#C9D3E6',30,.5]]);
+
+/* ---- bank grid ---- */
+(function(){ var g=document.getElementById('bankGrid'), tick='<span class="sp-tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>';
+  BANKS.forEach(function(b){ var el=document.createElement('button');
+    el.className='sp-pill'+(b.wide?' wide':'')+(b.txt?' txt':''); el.dataset.v=b.k;
+    el.innerHTML=(b.txt?b.n:'<img src="'+b.img+'" alt="'+b.n+'">')+tick;
+    el.addEventListener('click',function(){ var i=S.banks.indexOf(b.k); if(i>-1) S.banks.splice(i,1); else S.banks.push(b.k); syncScreen(); });
+    g.appendChild(el); }); })();
+
+/* ---- the wheel: real scroll-snap control ---- */
+var WMIN=200, WMAX=3000, WSTEP=100, IH=44, wheel=document.getElementById('wheel'), wTimer=null;
+(function(){ var h='<div class="sp-sp"></div>'; for(var v=WMIN; v<=WMAX; v+=WSTEP) h+='<div class="sp-it">'+String(v).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+'</div>'; h+='<div class="sp-sp"></div>'; wheel.innerHTML=h; })();
+function paintWheel(){ var idx=Math.round(wheel.scrollTop/IH); wheel.querySelectorAll('.sp-it').forEach(function(it,i){ var d=Math.abs(i-idx); it.style.opacity=d===0?1:(d===1?.45:.2); }); return idx; }
+wheel.addEventListener('scroll',function(){ var idx=paintWheel(); clearTimeout(wTimer);
+  wTimer=setTimeout(function(){ S.budget=Math.min(WMAX,WMIN+idx*WSTEP); syncScreen(true); },120); });
+function setWheel(){ wheel.scrollTop=((S.budget-WMIN)/WSTEP)*IH; paintWheel(); }
+
+/* ---- everything downstream reads S ---- */
+function syncScreen(fromWheel){
+  document.querySelectorAll('#goalList .sp-row').forEach(function(b){ b.classList.toggle('on', S.goals.indexOf(b.dataset.v)>-1); });
+  document.getElementById('goalBtn').disabled=!S.goals.length;
+  document.querySelectorAll('#bankGrid .sp-pill').forEach(function(b){ b.classList.toggle('on', S.banks.indexOf(b.dataset.v)>-1); });
+  var nb=S.banks.length; document.getElementById('bankCount').textContent = nb ? (nb+' selected') : 'Pick at least one';
+  document.getElementById('bankBtn').disabled=!nb;
+  if(!fromWheel) setWheel();
+
+  var now=new Date(), dim=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
+  var rb=realBanks(), names=rb.map(function(k){ return BANK[k].n; });
+  var gs=GOAL_ORDER.filter(function(k){ return S.goals.indexOf(k)>-1; }).map(function(k){ return GOALS[k].s; });
+
+  var st=document.querySelectorAll('#loadSteps .sp-ls .t');
+  st[0].textContent='Creating your '+eur(S.budget)+' monthly budget';
+  st[1].textContent= rb.length ? ('Lining up '+joinNames(names)+' for sync') : 'Setting up your cash wallet';
+  st[2].textContent='Putting '+joinNames(gs)+' first';
+
+  document.getElementById('perDay').textContent=eur(S.budget/dim,true);
+  document.getElementById('payMeta').innerHTML='<b>'+eur(S.budget)+'</b> a month ÷ '+dim+' days in '+MONTHS[now.getMonth()];
+  var pb=document.getElementById('payBanks'); pb.innerHTML='';
+  S.banks.forEach(function(k){ var b=BANK[k], d=document.createElement('span'); d.className='sp-mini';
+    d.innerHTML=b.txt?'Cash wallet':'<img src="'+b.img+'" alt="'+b.n+'">'; pb.appendChild(d); });
+  document.getElementById('bankLab').textContent = rb.length ? 'Ready to connect' : 'Your wallet';
+
+  document.getElementById('payH').textContent='Take Control of Your '+eur(S.budget)+' Budget – Instantly!';
+  var fl=document.getElementById('featList'), ord=S.goals.filter(function(k){return GOAL_ORDER.indexOf(k)>-1;}).sort(function(a,b){return GOAL_ORDER.indexOf(a)-GOAL_ORDER.indexOf(b);});
+  GOAL_ORDER.forEach(function(k){ if(ord.indexOf(k)<0) ord.push(k); });
+  fl.innerHTML=ord.map(function(k){ return '<div class="sp-f"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>'+GOALS[k].h+'</span></div>'; }).join('');
+  document.querySelectorAll('#planList .sp-plan').forEach(function(b){ b.classList.toggle('on', b.dataset.v===S.plan); });
+  var yr=S.plan==='year';
+  document.getElementById('paySub').textContent = yr ? 'Start now for 39,99 € per year' : '7 days free, then just 6,99 € per month';
+  document.getElementById('payTrust').textContent = yr ? 'Billed 39,99 € today · cancel anytime in Settings' : 'Nothing today · cancel anytime in Settings';
+  document.getElementById('payCta').textContent = yr ? 'Start Now – 39,99 € / year' : 'Start Today for Free';
+
+  var cl=document.getElementById('connList'); cl.innerHTML='';
+  S.banks.forEach(function(k){ var b=BANK[k], d=document.createElement('div'); d.className='sp-crow';
+    d.innerHTML=(b.txt?'<span class="nm">Cash wallet</span><span>Add</span>':'<img src="'+b.img+'" alt="'+b.n+'"><span>Connect</span>'); cl.appendChild(d); });
+  document.getElementById('connCta').textContent = rb.length ? ('Connect '+names[0]) : 'Add my cash wallet';
+}
+
+/* ---- router ---- */
+var ORDER=['welcome','goal','banks','budget','loader','payoff','paywall','offer','connect'];
+var LABEL={welcome:'Welcome',goal:'Goal',banks:'Banks',budget:'Budget',loader:'Loader',payoff:'Payoff',paywall:'Paywall',offer:'Offer on close',connect:'Connect'};
+var scr={}, hist=[], cur='welcome', loadTimers=[], cdTimer=null;
+document.querySelectorAll('.scr').forEach(function(s){ scr[s.dataset.id]=s; });
+
+function chrome(){ var l=!!scr[cur].dataset.light;
+  document.getElementById('sbar').classList.toggle('light',l); document.getElementById('homebar').classList.toggle('light',cur==='loader'); }
+function enter(id){ chrome(); paintChips(); paintPanel(); clearLoad(); stopCd();
+  if(id==='loader') runLoader(); if(id==='offer') runCd(); if(id==='budget') requestAnimationFrame(setWheel); }
+function go(id,opts){
+  opts=opts||{}; if(id===cur) return;
+  var from=scr[cur], to=scr[id];
+  if(!opts.back) hist.push(cur);
+  if(from){ from.classList.remove('is-active');
+    if(!to.classList.contains('sheet') && !from.classList.contains('sheet')) from.classList.add('is-past'); }
+  Object.keys(scr).forEach(function(k){ if(k!==id&&k!==cur) scr[k].classList.remove('is-active'); });
+  to.classList.remove('is-past'); to.classList.add('is-active');
+  cur=id; enter(id);
+}
+function back(){
+  if(!hist.length) return;
+  var prev=hist.pop();
+  scr[cur].classList.remove('is-active');
+  scr[prev].classList.remove('is-past'); scr[prev].classList.add('is-active');
+  cur=prev; enter(prev);
+}
+function jump(id){
+  var i=ORDER.indexOf(id);
+  Object.keys(scr).forEach(function(k){ scr[k].classList.add('nofx'); scr[k].classList.remove('is-active','is-past'); });
+  hist=ORDER.slice(0,i<0?0:i);
+  if(id==='offer'){ scr.paywall.classList.add('is-active'); }
+  scr[id].classList.add('is-active'); cur=id;
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    Object.keys(scr).forEach(function(k){ scr[k].classList.remove('nofx'); }); }); });
+  syncScreen(); enter(id);
+}
+function paintChips(){
+  var c=document.getElementById('chips');
+  if(!c.childElementCount){
+    ORDER.forEach(function(id){
+      var b=document.createElement('button'); b.className='chip'+(id==='offer'?' offer':''); b.textContent=LABEL[id];
+      b.dataset.id=id; b.onclick=function(){ jump(id); }; c.appendChild(b);
+    });
+  }
+  c.querySelectorAll('.chip').forEach(function(b){ b.classList.toggle('on', b.dataset.id===cur); });
+}
+
+function clearLoad(){ loadTimers.forEach(clearTimeout); loadTimers=[]; }
+function runLoader(){
+  var steps=document.querySelectorAll('#loadSteps .sp-ls');
+  steps.forEach(function(s){ s.classList.remove('on'); });
+  function showQuote(i){
+    document.getElementById('qText').textContent='“'+QUOTES[i][0]+'”';
+    document.getElementById('qWho').textContent='— '+QUOTES[i][1];
+    document.querySelectorAll('#qDots i').forEach(function(d,n){ d.classList.toggle('on',n===i); });
+  }
+  showQuote(0);
+  steps.forEach(function(s,i){ loadTimers.push(setTimeout(function(){ s.classList.add('on'); },700+i*900)); });
+  [1,2,3].forEach(function(i){ loadTimers.push(setTimeout(function(){ showQuote(i); },1400+(i-1)*1400)); });
+  loadTimers.push(setTimeout(function(){ if(cur==='loader') go('payoff'); },5400));
+}
+function stopCd(){ if(cdTimer){ clearInterval(cdTimer); cdTimer=null; } }
+function runCd(){ var t=300; function p(){ document.getElementById('cdM').textContent=('0'+Math.floor(t/60)).slice(-2); document.getElementById('cdS').textContent=('0'+(t%60)).slice(-2); }
+  p(); cdTimer=setInterval(function(){ t=Math.max(0,t-1); p(); },1000); }
+
+document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ if(!b.disabled) go(b.dataset.go); }); });
+document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click',back); });
+document.querySelectorAll('#goalList .sp-row').forEach(function(b){ b.addEventListener('click',function(){
+  var v=b.dataset.v, i=S.goals.indexOf(v); if(i>-1) S.goals.splice(i,1); else S.goals.push(v); syncScreen(); }); });
+document.querySelectorAll('#planList .sp-plan').forEach(function(b){ b.addEventListener('click',function(){ S.plan=b.dataset.v; syncScreen(); }); });
+document.getElementById('payClose').addEventListener('click',function(){ go('offer'); });
+document.getElementById('offClose').addEventListener('click',function(){ go('connect'); });
+document.getElementById('payCta').addEventListener('click',function(){ go('connect'); });
+document.getElementById('offerCta').addEventListener('click',function(){ go('connect'); });
+</script>
+<script>
+/* ---- the short panel: hypothesis + potential outcome, nothing else ---- */
+var PANEL = {
+welcome:{n:1,t:'Show the app before the price',
+ hyp:'Try opening on this screen, <b>because today the 39,99 € paywall, a monthly-trial sheet and a 20% offer all appear before anyone reaches Get Started</b>. The price now comes after they have set something up.',
+ kept:'Your welcome screen untouched — the bank-logo grid on your green, “We’ve been helping with money for 11 years”, the Forbes, 4.8 and Top 10 tiles, Get Started and Sign In.',
+ out:'CR +10–20%'},
+
+goal:{n:2,t:'Turn three taps into a daily budget',
+ hyp:'Try asking what they want to get on top of, <b>because that answer then decides which benefits your paywall lists first</b>. The four options are the four lines already on your paywall.',
+ kept:'Your check circles and bold-phrase copy, lifted from the paywall feature list.',
+ out:'CR +10–20%'},
+
+banks:{n:2,t:'Turn three taps into a daily budget',
+ hyp:'Try letting them tap the banks they use, <b>because your logo grid already sells bank sync — now it also tells the app which bank to connect first</b>.',
+ kept:'Your white logo pills on your green, straight from the welcome screen.',
+ out:'CR +10–20%'},
+
+budget:{n:2,t:'Turn three taps into a daily budget',
+ hyp:'Try asking for one number, a monthly budget, <b>because Spendee already turns a budget into what you can spend each day</b>. The payoff is real arithmetic, not a promise. Scroll the wheel and the next screens change.',
+ kept:'Your green, your type and your pill button. The wheel is a working control.',
+ out:'CR +10–20%'},
+
+loader:{n:2,t:'Turn three taps into a daily budget',
+ hyp:'Try naming their answers back while it sets up, <b>because a loader only pays off when something personal comes after it</b>. The four quotes are from your own homepage.',
+ kept:'Your welcome-screen green and your donut mark.',
+ out:'CR +10–20%'},
+
+payoff:{n:2,t:'Turn three taps into a daily budget',
+ hyp:'Try showing the daily amount before the price, <b>because it is their own budget divided by the days in the month — the same sum your budgets do</b> — with the banks they picked lined up next to it.',
+ kept:'Your donut colours, card surfaces and logo pills. The free-plan limits are from your pricing page.',
+ out:'CR +10–20%'},
+
+paywall:{n:3,t:'Put their budget and your awards on the paywall',
+ hyp:'Try naming their budget in your own headline and moving your Forbes, 4.8 and Top 10 row above the plans, <b>because today that proof lives on the welcome screen and the paywall speaks to nobody in particular</b>. The benefits they picked move to the top of the list.',
+ hyp2:'Try both plans on one screen with the saving shown, <b>because monthly only appears in a sheet after closing, and 39,99 € a year is never shown as 3,33 € a month — 52% less than 6,99 € monthly</b>.',
+ n2:4, out2:'ARPU +10–15%',
+ kept:'Your headline shape, donut mark, soft background, check-circle list, mint plan card with the dotted “7 days free” badge and your green button. Tap Monthly — the line under the headline, the trust line and the button all switch to your trial copy.',
+ out:'CR +15–20%'},
+
+offer:{n:5,t:'One offer on close, not two',
+ hyp:'Try this as the only second chance, reached from the paywall’s X, <b>because today closing the paywall opens the monthly sheet and then this offer back to back, before the app has said hello</b>. 29,99 € is your own price, so nothing here is invented.',
+ kept:'Your Limited Time Offer screen as it ships — the gift, 20% OFF, both price lines, the “Offer ends soon” pill, the countdown boxes and the confetti.',
+ out:'ARPU +10–15%'},
+
+connect:{ctx:true,t:'Connect your first bank',
+ kept:'Where the flow hands over to the app. Bank connection stays after purchase, where it is today; the banks they tapped are carried across so the first one is a single tap.'}
+};
+
+function outBlock(lab,val){
+  return '<div class="pn-out"><div class="lab">'+lab+'</div><div class="v">'+val+'</div></div>';
+}
+function paintPanel(){
+  var d=PANEL[cur]; if(!d) return;
+  var h='';
+  if(d.ctx){
+    h += '<div class="pn-n ctx">Context · no change proposed</div><h3 class="pn-t">'+d.t+'</h3>'
+       + '<div class="pn-kept">'+d.kept+'</div>';
+  } else {
+    h += '<div class="pn-n">Idea '+d.n+' of 5</div><h3 class="pn-t">'+d.t+'</h3>'
+       + '<p class="pn-hyp">'+d.hyp+'</p>'
+       + outBlock('Potential outcome · based on Adapty data', d.out);
+    if(d.hyp2){
+      h += '<div class="pn-sep"></div>'
+         + '<div class="pn-n">Idea '+d.n2+' of 5</div>'
+         + '<p class="pn-hyp" style="margin-top:12px">'+d.hyp2+'</p>'
+         + outBlock('Potential outcome · based on Adapty data', d.out2);
+    }
+    h += '<div class="pn-kept"><b>Your design, unchanged.</b> '+d.kept+'</div>';
+  }
+  h += '<div class="pn-foot">Ranges are Adapty’s expected effect from tests across 30,000+ subscription apps — not measured lift for Spendee. '
+     + 'Prices, ratings, quotes and feature lines come from your own published material.</div>';
+  document.getElementById('panel').innerHTML = h;
+}
+
+/* ---- views, jumps from the overview ---- */
+function showView(v){
+  document.querySelectorAll('.view').forEach(function(x){ x.classList.remove('on'); });
+  document.getElementById('view-'+v).classList.add('on');
+  document.querySelectorAll('.nav-links button[data-view]').forEach(function(b){ b.classList.toggle('on', b.dataset.view===v); });
+  window.scrollTo(0,0);
+  if(v==='proto' && cur==='budget') requestAnimationFrame(setWheel);
+}
+document.querySelectorAll('[data-view]').forEach(function(b){ b.addEventListener('click',function(){ showView(b.dataset.view); }); });
+document.querySelectorAll('.idea[data-jump]').forEach(function(b){
+  b.addEventListener('click',function(){ showView('proto'); jump(b.dataset.jump); });
+});
+
+scr.welcome.classList.add('is-active');
+syncScreen(); chrome(); paintChips(); paintPanel();
+</script>
+</body>
+</html>
