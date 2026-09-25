@@ -463,7 +463,7 @@ a{color:inherit}
 .demo-cap button{font:700 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);padding:7px 10px;border-radius:12px;border:1px solid #E1E4E6;flex:none}
 .finger{position:absolute;z-index:90;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(35,41,50,.26);
   border:2px solid rgba(255,255,255,.95);box-shadow:0 4px 14px rgba(0,0,0,.25);pointer-events:none;opacity:0;left:50%;top:60%;
-  transition:left .45s cubic-bezier(.4,0,.2,1),top .45s cubic-bezier(.4,0,.2,1),opacity .2s,transform .15s}
+  transition:left .32s cubic-bezier(.4,0,.2,1),top .32s cubic-bezier(.4,0,.2,1),opacity .2s,transform .15s}
 .finger.show{opacity:1}
 .finger.press{transform:scale(.78);background:rgba(35,41,50,.4)}
 .qr{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--hair);border-radius:16px;padding:10px 16px 10px 10px;text-align:left}
@@ -563,7 +563,7 @@ a{color:inherit}
     <h1>Spendee</h1>
     <p class="lede">Five ideas to unlock more revenue from the traffic you already have.</p>
     <div class="meta">Prepared by <b>Adapty</b> · based on your live iOS flow and your App Store listing</div>
-    <div class="herobtns"><button class="ghostbtn" data-demo><span class="pl"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg></span>Watch the 60-second walkthrough</button></div>
+    <div class="herobtns"><button class="ghostbtn" data-demo><span class="pl"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg></span>Watch the 30-second walkthrough</button></div>
     <div class="stats">
       <div class="stat"><b>30,000+</b><span>apps run subscriptions<br>on Adapty</span></div>
       <div class="stat"><b>5</b><span>ideas, each rebuilt<br>as a working screen</span></div>
@@ -707,7 +707,7 @@ a{color:inherit}
       <div class="seg" id="segLang"><button data-lang="en" class="on">EN</button><button data-lang="cs">CS</button><button data-lang="de">DE</button></div>
       <div class="seg" id="segTheme"><button data-theme="light" class="on">Light</button><button data-theme="dark">Dark</button></div>
       <div class="seg" id="segVar"><span>Paywall</span><button data-var="a">Today</button><button data-var="b" class="on">Proposed</button></div>
-      <button class="demo-btn" id="demoBtn"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>60-sec walkthrough</button>
+      <button class="demo-btn" id="demoBtn"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>30-sec walkthrough</button>
     </div>
     <div class="phone">
       <div class="phone-in" id="phoneIn">
@@ -1264,6 +1264,7 @@ function paintChips(){
 
 function clearLoad(){ loadTimers.forEach(clearTimeout); loadTimers=[]; }
 function runLoader(){
+  var k=demo.on?0.48:1;
   var steps=[].slice.call(document.querySelectorAll('#loadSteps .sp-ls')).filter(function(s){ return !s.classList.contains('hidden'); });
   steps.forEach(function(s){ s.classList.remove('on'); });
   function showQuote(i){
@@ -1272,9 +1273,9 @@ function runLoader(){
     document.querySelectorAll('#qDots i').forEach(function(d,n){ d.classList.toggle('on',n===i); });
   }
   showQuote(0);
-  steps.forEach(function(s,i){ loadTimers.push(setTimeout(function(){ s.classList.add('on'); },600+i*800)); });
-  [1,2,3].forEach(function(i){ loadTimers.push(setTimeout(function(){ showQuote(i); },1400+(i-1)*1400)); });
-  loadTimers.push(setTimeout(function(){ if(cur==='loader') go('payoff'); },5400));
+  steps.forEach(function(s,i){ loadTimers.push(setTimeout(function(){ s.classList.add('on'); },(600+i*800)*k)); });
+  [1,2,3].forEach(function(i){ loadTimers.push(setTimeout(function(){ showQuote(i); },(1400+(i-1)*1400)*k)); });
+  loadTimers.push(setTimeout(function(){ if(cur==='loader') go('payoff'); },5400*k));
 }
 function stopCd(){ if(cdTimer){ clearInterval(cdTimer); cdTimer=null; } }
 function runCd(){ var s=300; function p(){ document.getElementById('cdM').textContent=('0'+Math.floor(s/60)).slice(-2); document.getElementById('cdS').textContent=('0'+(s%60)).slice(-2); }
@@ -1309,7 +1310,7 @@ document.querySelectorAll('#segLang button').forEach(function(b){ b.addEventList
 document.querySelectorAll('#segTheme button').forEach(function(b){ b.addEventListener('click',function(){ setTheme(b.dataset.theme); }); });
 document.querySelectorAll('#segVar button').forEach(function(b){ b.addEventListener('click',function(){ stopDemo(); setVariant(b.dataset.var); }); });
 
-/* ================= the 60-second walkthrough ================= */
+/* ================= the 30-second walkthrough ================= */
 var demo={tok:0,on:false,t0:0,iv:null}, finger=document.getElementById('finger'), phoneIn=document.getElementById('phoneIn');
 function W(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
 function cap(txt){ document.getElementById('demoTxt').textContent=txt; }
@@ -1318,8 +1319,8 @@ async function tap(sel,tok){
   var el=document.querySelector(sel); if(!el) return;
   var r=el.getBoundingClientRect(), p=phoneIn.getBoundingClientRect(), z=p.width/phoneIn.offsetWidth||1;
   finger.style.left=((r.left-p.left+r.width/2)/z)+'px'; finger.style.top=((r.top-p.top+r.height/2)/z)+'px';
-  finger.classList.add('show'); await W(520); if(demo.tok!==tok) throw 0;
-  finger.classList.add('press'); await W(160); finger.classList.remove('press'); el.click(); await W(260);
+  finger.classList.add('show'); await W(380); if(demo.tok!==tok) throw 0;
+  finger.classList.add('press'); await W(120); finger.classList.remove('press'); el.click(); await W(160);
   if(demo.tok!==tok) throw 0;
 }
 async function pause(ms,tok){ await W(ms); if(demo.tok!==tok) throw 0; }
@@ -1329,29 +1330,30 @@ function startDemo(){
   if(cc()==='CZK'){ var c=C(); S.budget=c.budget; S.monthly=c.monthly; } S.target=defaultTarget('car');
   setSeg('segVar','var','b'); applyStatic(); jump('welcome');
   document.getElementById('demoCap').classList.remove('hidden');
-  demo.iv=setInterval(function(){ document.getElementById('demoProg').style.width=Math.min(100,(Date.now()-demo.t0)/580)+'%'; },200);
+  demo.iv=setInterval(function(){ document.getElementById('demoProg').style.width=Math.min(100,(Date.now()-demo.t0)/290)+'%'; },200);
   (async function(){
     try{
-      cap('A new install opens on your welcome screen — not on a price.'); await pause(3400,tok);
+      cap('A new install opens on your welcome screen — not on a price.'); await pause(1600,tok);
       await tap('[data-id=welcome] .sp-btn',tok);
-      cap('Four quick setup taps. First: what matters to them.'); await pause(1700,tok);
-      await tap('#goalList [data-v=track]',tok); await pause(900,tok); await tap('#goalBtn',tok);
-      cap('What they are saving for. Say, a new car.'); await pause(1600,tok);
-      await tap('#saveGrid [data-v=car]',tok); await pause(900,tok); await tap('[data-id=save] .sp-btn',tok);
-      cap('Which banks they use, on your own logo tiles.'); await pause(1400,tok);
-      await tap('#bankGrid [data-v=barclays]',tok); await pause(900,tok); await tap('#bankBtn',tok);
-      cap('One number: what they want to spend a month.'); await pause(1200,tok);
-      wheel.scrollTo({top:wheel.scrollTop+3*IH,behavior:'smooth'}); await pause(1900,tok);
+      cap('Four quick setup taps. First: what matters to them.'); await pause(700,tok);
+      await tap('#goalList [data-v=track]',tok); await pause(350,tok); await tap('#goalBtn',tok);
+      cap('What they are saving for. Say, a new car.'); await pause(700,tok);
+      await tap('#saveGrid [data-v=car]',tok); await pause(350,tok); await tap('[data-id=save] .sp-btn',tok);
+      cap('Which banks they use, on your own logo tiles.'); await pause(600,tok);
+      await tap('#bankGrid [data-v=barclays]',tok); await pause(350,tok); await tap('#bankBtn',tok);
+      cap('One number: what they want to spend a month.'); await pause(450,tok);
+      var wc=C(), wb=Math.min(wc.wmax,S.budget+3*wc.wstep); wheel.scrollTo({top:((wb-wc.wmin)/wc.wstep)*IH,behavior:'smooth'}); await pause(1050,tok);
+      S.budget=wb; setWheel(); syncScreen(true);
       await tap('[data-id=budget] .sp-btn',tok);
-      cap('Their answers, read back while it sets up.'); await pause(5700,tok);
-      cap('The payoff: what they can spend a day, and when the car is paid for.'); await pause(2200,tok);
-      await tap('#monPlus',tok); await pause(500,tok); await tap('#monPlus',tok); await pause(1600,tok);
+      cap('Their answers, read back while it sets up.'); await pause(2750,tok);
+      cap('The payoff: what they can spend a day, and when the car is paid for.'); await pause(1300,tok);
+      await tap('#monPlus',tok); await pause(200,tok); await tap('#monPlus',tok); await pause(800,tok);
       await tap('[data-id=payoff] .sp-btn',tok);
-      cap('The paywall opens on their goal, their budget and your awards.'); await pause(3400,tok);
-      await tap('#planList [data-v=month]',tok); await pause(1500,tok); await tap('#planList [data-v=year]',tok); await pause(1200,tok);
-      cap('They close it. One offer, on your own 29,99 € price.'); await tap('#payClose',tok); await pause(4600,tok);
+      cap('The paywall opens on their goal, their budget and your awards.'); await pause(1800,tok);
+      await tap('#planList [data-v=month]',tok); await pause(700,tok); await tap('#planList [data-v=year]',tok); await pause(400,tok);
+      cap('They close it. One offer, on your own 29,99 € price.'); await tap('#payClose',tok); await pause(2100,tok);
       cap('That is the flow. Flip “Paywall: Today” above the phone to compare with what ships now.');
-      finger.classList.remove('show'); await pause(5000,tok); stopDemo();
+      finger.classList.remove('show'); await pause(2600,tok); stopDemo();
     }catch(e){}
   })();
 }

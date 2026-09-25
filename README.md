@@ -14,7 +14,7 @@ Five ranked ideas for Spendee's first-run flow, plus a clickable prototype of th
 
 **In the prototype**
 
-- **60-second walkthrough** — press play on the Overview and the prototype taps itself through the flow, with captions.
+- **30-second walkthrough** — press play on the Overview and the prototype taps itself through the flow, with captions.
 - **EN / CS / DE** — every phone screen in three languages; Czech switches the budget to Kč.
 - **Paywall: Today / Proposed** — flip between the paywall, monthly sheet and offer as they ship now and the rebuilt versions.
 - **Light / Dark** — the screens in dark mode.
