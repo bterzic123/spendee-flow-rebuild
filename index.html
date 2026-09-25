@@ -155,7 +155,7 @@ a{color:inherit}
 
 .phone{position:relative;width:390px;height:844px;flex:none;background:#000;border:11px solid #000;
   border-radius:46px;box-shadow:0 0 0 1.5px #D5D9DC,0 34px 70px -22px rgba(35,41,50,.35)}
-@media(max-width:430px){.phone{zoom:.84}.phonecol{padding:20px 12px 36px}.stage{grid-template-columns:minmax(0,1fr)}}
+
 .phone-in{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:var(--sp-bg);color-scheme:only light}
 .island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:104px;height:30px;background:#000;
   border-radius:16px;z-index:60;pointer-events:none}
@@ -240,7 +240,7 @@ a{color:inherit}
 .sp-snone{grid-column:1/-1;height:52px;border-radius:26px;background:#fff;border:2.5px solid transparent;font:800 15px/1 'Figtree',sans-serif;color:var(--sp-ink2);box-shadow:0 2px 10px rgba(0,0,0,.04)}
 .sp-snone.on{border-color:var(--sp-mint-line);background:var(--sp-mint)}
 /* the goal photo on payoff + paywall */
-.sp-goalrow{display:flex;align-items:center;gap:12px;margin-top:12px;background:#fff;border-radius:20px;padding:10px 12px}
+.sp-goalrow{display:flex;align-items:center;gap:12px;margin-top:10px;background:#fff;border-radius:20px;padding:10px 12px}
 .sp-goalrow img{width:64px;height:44px;border-radius:12px;object-fit:cover;flex:none;display:block}
 .sp-goalrow div{font-size:13px;line-height:1.35;color:var(--sp-txt)}
 .sp-goalrow div b{display:block;color:var(--sp-ink);font-size:14.5px;font-weight:800}
@@ -303,20 +303,20 @@ a{color:inherit}
 .sp-qd i.on{background:#fff;width:16px;border-radius:3px}
 
 /* payoff */
-.sp-paycard{background:#fff;border-radius:var(--r-media);padding:22px 18px 18px;margin-top:20px;text-align:center}
-.sp-ring{position:relative;width:176px;height:176px;margin:0 auto}
+.sp-paycard{background:#fff;border-radius:var(--r-media);padding:18px 18px 14px;margin-top:16px;text-align:center}
+.sp-ring{position:relative;width:150px;height:150px;margin:0 auto}
 .sp-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .sp-ring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .sp-ring .c b{font-size:33px;font-weight:900;letter-spacing:-.03em;color:var(--sp-ink);line-height:1}
 .sp-ring .c span{font-size:13px;font-weight:700;color:var(--sp-muted);margin-top:5px}
-.sp-paymeta{font-size:15px;color:var(--sp-txt);margin-top:14px;font-weight:500}
+.sp-paymeta{font-size:15px;color:var(--sp-txt);margin-top:10px;font-weight:500}
 .sp-paymeta b{color:var(--sp-ink);font-weight:800}
-.sp-lab{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--sp-muted);margin:18px 0 9px;text-transform:uppercase}
+.sp-lab{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--sp-muted);margin:14px 0 8px;text-transform:uppercase}
 .sp-minis{display:flex;flex-wrap:wrap;gap:8px}
 .sp-mini{height:38px;padding:0 14px;border-radius:19px;background:#fff;display:flex;align-items:center;gap:8px;
   box-shadow:0 2px 8px rgba(0,0,0,.05);font:800 13px/1 'Figtree',sans-serif;color:var(--sp-ink2)}
 .sp-mini img{height:17px;display:block}
-.sp-lock{display:flex;align-items:center;gap:12px;margin-top:16px;background:#fff;border:1.5px dashed #CFD5D9;border-radius:20px;padding:13px 14px}
+.sp-lock{display:flex;align-items:center;gap:12px;margin-top:12px;background:#fff;border:1.5px dashed #CFD5D9;border-radius:20px;padding:13px 14px}
 .sp-lock svg{width:20px;height:20px;flex:none;stroke:var(--sp-check);stroke-width:2;fill:none}
 .sp-lock div{font-size:13px;line-height:1.4;color:var(--sp-txt)}
 .sp-lock div b{display:block;color:var(--sp-ink);font-size:14px;font-weight:800}
@@ -390,6 +390,128 @@ a{color:inherit}
 .sp-crow span{font:800 13px/1 'Figtree',sans-serif;color:var(--sp-check)}
 .sp-crow .nm{font:800 16px/1 'Figtree',sans-serif;color:var(--sp-ink2)}
 
+/* payoff savings target */
+.sp-goalrow div span{font-size:12.5px}
+.sp-goalrow div span b{display:inline;font-size:12.5px}
+.sp-tgt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.sp-step{background:#fff;border-radius:16px;padding:8px 8px 8px 12px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.sp-step small{display:block;font-size:10.5px;font-weight:800;color:var(--sp-muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.sp-step b{display:block;font-size:15px;font-weight:800;color:var(--sp-ink);margin-top:2px;white-space:nowrap}
+.sp-step .pm{display:flex;gap:4px;flex:none}
+.sp-step .pm button{width:28px;height:28px;border-radius:50%;background:var(--sp-mint);color:var(--sp-check);font:800 17px/1 'Figtree',sans-serif}
+
+/* paywall: today's version */
+.scr--pay.var-a .sp-proofcard,.scr--pay.var-a #planList,.scr--pay.var-a .sp-trust{display:none}
+.scr--pay.var-a .sp-feat{margin-top:22px;padding:18px 18px;gap:14px}
+.scr--pay.var-a .sp-f{font-size:16px}
+.scr--pay.var-a .sp-donut{width:110px;height:110px;margin-top:40px}
+.scr--pay.var-a .sp-payh{font-size:31px;margin-top:22px}
+
+/* today's monthly sheet, over the paywall */
+.scr.sp-ov{background:transparent;transform:none !important;opacity:0;pointer-events:none;transition:opacity .3s;z-index:40;display:block}
+.scr.sp-ov.is-active{opacity:1;pointer-events:auto}
+.sp-dim{position:absolute;inset:0;background:rgba(40,44,48,.42)}
+.sp-sheet{position:absolute;left:0;right:0;bottom:0;background:#F7F7F7;border-radius:40px 40px 0 0;padding:14px 22px 34px;
+  transform:translateY(100%);transition:transform .36s cubic-bezier(.32,.72,0,1)}
+.sp-ov.is-active .sp-sheet{transform:none}
+.sp-handle{width:44px;height:5px;border-radius:3px;background:#C9CCCF;margin:0 auto}
+.sp-sh-h{font-size:23px;font-weight:800;letter-spacing:-.02em;color:var(--sp-ink2);text-align:center;margin:26px 0 0}
+.sp-sh-s{font-size:16px;font-weight:800;color:var(--sp-txt);text-align:center;margin:12px 0 0}
+.sp-sheet .sp-plan{cursor:default}
+
+/* dark mode — an approximation: no dark frames were supplied */
+.phone-in.dark{--sp-bg:#121417;--sp-card:#1D2126;--sp-line:#2D3238;--sp-mint:#133526;--sp-ink:#F3F5F6;--sp-ink2:#DADDE0;
+  --sp-txt:#A9B0B6;--sp-muted:#7D848B;--sp-red-bg:#3A1D1D;--sp-red-line:#6B2C2A;--sp-red:#FF8177;background:var(--sp-bg)}
+.phone-in.dark .screenwrap,.phone-in.dark .scr--welcome{background:var(--sp-bg)}
+.phone-in.dark .sp-back,.phone-in.dark .sp-row,.phone-in.dark .sp-snone,.phone-in.dark .sp-goalrow,.phone-in.dark .sp-note,
+.phone-in.dark .sp-paycard,.phone-in.dark .sp-lock,.phone-in.dark .sp-proofcard,.phone-in.dark .sp-plan,.phone-in.dark .sp-badge,
+.phone-in.dark .sp-step,.phone-in.dark .sp-ocard,.phone-in.dark .scr--offer .sp-x{background:var(--sp-card)}
+.phone-in.dark .sp-row.on,.phone-in.dark .sp-snone.on,.phone-in.dark .sp-plan.on{background:var(--sp-mint)}
+.phone-in.dark .sp-sheet{background:#1A1D21}
+.phone-in.dark .sp-prog{background:#2A2E33}
+.phone-in.dark .sp-row:not(.on) .sp-ck,.phone-in.dark .sp-plan:not(.on) .sp-radio{border-color:#3C4249}
+.phone-in.dark .sp-lock{border-color:#3C4249}
+.phone-in.dark .sp-proofimg{filter:invert(1) hue-rotate(180deg)}
+.phone-in.dark .scr--pay{background:#121417}
+.phone-in.dark .sp-paybg{background:radial-gradient(60% 40% at 0% 30%,rgba(80,110,150,.30),transparent 70%),
+   radial-gradient(55% 35% at 60% 36%,rgba(150,90,100,.22),transparent 70%),
+   radial-gradient(50% 30% at 100% 22%,rgba(60,120,95,.25),transparent 70%),linear-gradient(180deg,#1A1D21,#121417 70%)}
+.phone-in.dark .scr--pay .scr-foot{background:linear-gradient(180deg,rgba(18,20,23,0),#121417 18%)}
+.phone-in.dark .sp-x{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14);color:#E8EBED}
+.phone-in.dark .scr--pay.has-photo .sp-x{background:rgba(20,22,25,.72)}
+.phone-in.dark .sp-paygoal{background:rgba(29,33,38,.92);color:var(--sp-ink)}
+.phone-in.dark .sp-feat{background:rgba(255,255,255,.05)}
+.phone-in.dark .sp-oh,.phone-in.dark .sp-off,.phone-in.dark .sp-cd b,.phone-in.dark .sp-cd span{color:var(--sp-ink)}
+.phone-in.dark .sp-cd div{background:#23282D;border-color:var(--sp-line)}
+.phone-in.dark .sp-btn[disabled]{background:#1E4637;color:#7FA595}
+.phone-in.dark .sp-dim{background:rgba(0,0,0,.55)}
+.phone-in.dark .ringbg{stroke:#2A2E33}
+
+/* prototype toolbar, walkthrough, QR */
+.tools{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:520px}
+.seg{display:inline-flex;align-items:center;background:#fff;border:1px solid #E1E4E6;border-radius:20px;padding:3px;gap:2px}
+.seg span{font:700 10px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);padding:0 6px 0 8px}
+.seg button{padding:6px 11px;border-radius:16px;font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);transition:.14s}
+.seg button.on{background:var(--ink);color:#fff}
+.demo-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:20px;background:var(--accent);color:#fff;
+  font:700 12px/1 'Plus Jakarta Sans',sans-serif}
+.demo-cap{width:390px;max-width:calc(100vw - 24px);background:#fff;border:1px solid var(--hair);border-radius:16px;padding:14px 14px 12px;
+  display:flex;align-items:center;gap:12px;position:relative;overflow:hidden;box-shadow:0 4px 18px rgba(35,41,50,.07)}
+.demo-cap .bar{position:absolute;left:0;top:0;right:0;height:3px;background:#EEF0F1}
+.demo-cap .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s linear}
+.demo-cap p{flex:1;font-size:13.5px;line-height:1.45;color:var(--ink);margin:0;font-weight:500}
+.demo-cap button{font:700 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);padding:7px 10px;border-radius:12px;border:1px solid #E1E4E6;flex:none}
+.finger{position:absolute;z-index:90;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(35,41,50,.26);
+  border:2px solid rgba(255,255,255,.95);box-shadow:0 4px 14px rgba(0,0,0,.25);pointer-events:none;opacity:0;left:50%;top:60%;
+  transition:left .45s cubic-bezier(.4,0,.2,1),top .45s cubic-bezier(.4,0,.2,1),opacity .2s,transform .15s}
+.finger.show{opacity:1}
+.finger.press{transform:scale(.78);background:rgba(35,41,50,.4)}
+.qr{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--hair);border-radius:16px;padding:10px 16px 10px 10px;text-align:left}
+.qr img{width:84px;height:84px;display:block;image-rendering:pixelated}
+.qr span{font-size:12.5px;line-height:1.45;color:var(--ink2)}
+.qr b{display:block;color:var(--ink);font-size:13.5px}
+@media(max-width:1080px){.qr{display:none}}
+
+#view-proto .tools{order:0} #view-proto .demo-cap{order:1} #view-proto .phone{order:2} #view-proto .chips{order:3}
+#view-proto .chiphint{order:4} #view-proto .qr{order:5}
+.cta-row .qr{order:2}
+/* on a phone: the prototype is the screen */
+@media(max-width:500px){
+  #view-proto .phonecol{padding:0 0 28px;gap:14px}
+  #view-proto .phone{width:100vw;height:calc(100svh - 58px);min-height:640px;border:0;border-radius:0;box-shadow:none;order:1}
+  #view-proto .phone-in{border-radius:0}
+  #view-proto .island,#view-proto .sbar,#view-proto .homebar{display:none}
+  #view-proto .scr-top{padding-top:16px}
+  #view-proto .scr-foot{padding-bottom:18px}
+  #view-proto .scr--pay .scr-top{padding-top:14px}
+  #view-proto .scr--pay.has-photo .scr-top{padding-top:100px}
+  #view-proto .sp-payphoto{height:120px}
+  #view-proto .sp-x{top:14px}
+  #view-proto .sp-paygoal{top:24px}
+  #view-proto .sp-oh{margin-top:74px !important}
+  #view-proto .sp-wtop{padding-top:14px}
+  #view-proto .scr--pay .scr-foot{padding-bottom:16px}
+  #view-proto .tools{order:3;padding:0 12px}
+  #view-proto .demo-cap{position:fixed;left:12px;right:12px;bottom:12px;width:auto;max-width:none;z-index:95}
+  #view-proto .chips{order:4;padding:0 12px}
+  #view-proto .chiphint{order:5}
+}
+
+/* overview: walkthrough button, first-test plan */
+.herobtns{display:flex;justify-content:center;margin-top:30px}
+.ghostbtn{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--hair2);color:var(--ink);font-size:14px;
+  font-weight:700;padding:9px 20px 9px 9px;border-radius:30px;box-shadow:0 2px 12px rgba(35,41,50,.06);transition:.16s}
+.ghostbtn:hover{box-shadow:0 4px 18px rgba(35,41,50,.1)}
+.ghostbtn .pl{width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.ghostbtn .pl svg{width:12px;height:12px;fill:#fff;margin-left:2px}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+@media(max-width:860px){.steps3{grid-template-columns:1fr}}
+.step3{background:var(--surf);border:1px solid var(--hair);border-radius:20px;padding:24px 24px 22px;box-shadow:0 2px 10px rgba(35,41,50,.04)}
+.step3 .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lift);margin-bottom:10px}
+.step3 h4{font-size:17px;font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
+.step3 p{font-size:14px;line-height:1.6;color:var(--ink2);margin:0}
+.cta-row{align-items:center;gap:22px;flex-wrap:wrap}
+
 /* chips */
 .chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:470px;margin:0 auto}
 .chip{padding:7px 13px;border-radius:20px;border:1px solid #E1E4E6;background:#fff;
@@ -441,6 +563,7 @@ a{color:inherit}
     <h1>Spendee</h1>
     <p class="lede">Five ideas to unlock more revenue from the traffic you already have.</p>
     <div class="meta">Prepared by <b>Adapty</b> · based on your live iOS flow and your App Store listing</div>
+    <div class="herobtns"><button class="ghostbtn" data-demo><span class="pl"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg></span>Watch the 60-second walkthrough</button></div>
     <div class="stats">
       <div class="stat"><b>30,000+</b><span>apps run subscriptions<br>on Adapty</span></div>
       <div class="stat"><b>5</b><span>ideas, each rebuilt<br>as a working screen</span></div>
@@ -552,7 +675,16 @@ a{color:inherit}
       </div>
     </div>
 
+    <div class="sec-k" style="margin-top:88px">How we would run the first test</div>
+    <h2>One person, one dashboard, no redesign.</h2>
+    <div class="steps3">
+      <div class="step3"><div class="k">Step 1 · once</div><h4>Add Adapty to the app</h4><p>One app release adds the Adapty SDK, which supports React Native and native iOS. Your existing store products and prices stay exactly as they are.</p></div>
+      <div class="step3"><div class="k">Step 2 · first test</div><h4>Test idea 01 against today</h4><p>Half of new installs get today’s flow, half get welcome, setup, then the paywall. We compare purchases and revenue per install, not only paywall conversion.</p></div>
+      <div class="step3"><div class="k">Step 3 · then</div><h4>Read it, then move on</h4><p>With steady organic installs, a 50/50 test usually needs a few weeks to read cleanly. Then ideas 03 and 04 on the paywall, then 05 on close — each from the dashboard, with no app release.</p></div>
+    </div>
+
     <div class="cta-row">
+      <div class="qr"><img src="img/qr.svg" alt="QR code for the prototype"><span><b>Or open it on your phone</b>Scan to try the flow in your hand.</span></div>
       <button class="bigbtn" data-view="proto">Open the prototype
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
@@ -571,8 +703,14 @@ a{color:inherit}
 <div class="view" id="view-proto">
 <div class="stage">
   <div class="phonecol">
+    <div class="tools" id="tools">
+      <div class="seg" id="segLang"><button data-lang="en" class="on">EN</button><button data-lang="cs">CS</button><button data-lang="de">DE</button></div>
+      <div class="seg" id="segTheme"><button data-theme="light" class="on">Light</button><button data-theme="dark">Dark</button></div>
+      <div class="seg" id="segVar"><span>Paywall</span><button data-var="a">Today</button><button data-var="b" class="on">Proposed</button></div>
+      <button class="demo-btn" id="demoBtn"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>60-sec walkthrough</button>
+    </div>
     <div class="phone">
-      <div class="phone-in">
+      <div class="phone-in" id="phoneIn">
         <div class="island"></div>
         <div class="sbar" id="sbar">
           <span>9:41</span>
@@ -583,19 +721,20 @@ a{color:inherit}
           </span>
         </div>
         <div class="homebar" id="homebar"></div>
+        <div class="finger" id="finger"></div>
         <div class="screenwrap">
 
 <!-- WELCOME -->
 <section class="scr scr--welcome" data-id="welcome" data-light="1">
   <div class="scr-top" style="padding:0"></div>
   <div class="scr-body">
-    <div class="sp-wtop"><img src="img/welcome-logos.png" alt="Supported banks: PayPal, HSBC, Chase, Deutsche Bank, Barclays, Revolut, Wise, Bank of America, ING, mBank, Česká spořitelna and more"></div>
-    <h2 class="sp-wh">We&#39;ve been helping with money for 11 years</h2>
-    <img class="sp-proofimg" src="img/proof.png" alt="Forbes Best Budgeting App · 4.8 App Store · Top 10 Finance app">
+    <div class="sp-wtop"><img src="img/welcome-logos-a.png" alt="Supported banks: PayPal, HSBC, Chase, Deutsche Bank, Barclays, Revolut, Wise, Bank of America, ING, mBank, Česká spořitelna and more"></div>
+    <h2 class="sp-wh" data-t="wel.h"></h2>
+    <img class="sp-proofimg" src="img/proof-a.png" alt="Forbes Best Budgeting App · 4.8 App Store · Top 10 Finance app">
   </div>
   <div class="scr-foot">
-    <button class="sp-btn" data-go="goal">Get Started</button>
-    <p class="sp-signin">Have an account? <b>Sign In</b></p>
+    <button class="sp-btn" data-go="goal" data-t="wel.cta"></button>
+    <p class="sp-signin" data-th="wel.signin"></p>
   </div>
 </section>
 
@@ -606,20 +745,11 @@ a{color:inherit}
       <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
       <div class="sp-prog"><i style="width:25%"></i></div>
     </div>
-    <h2 class="sp-h">What do you want to<br>get on top of?</h2>
-    <p class="sp-sub">Pick all that apply.</p>
+    <h2 class="sp-h" data-th="goal.h"></h2>
+    <p class="sp-sub" data-t="goal.sub"></p>
   </div>
-  <div class="scr-body">
-    <div class="sp-rows" id="goalList">
-      <button class="sp-row" data-v="banks"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Connect my <b>banks, cash &amp; investments</b></span></button>
-      <button class="sp-row" data-v="networth"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>See my <b>net worth</b> in one place</span></button>
-      <button class="sp-row" data-v="track"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Auto-track</b> spending, income &amp; subscriptions</span></button>
-      <button class="sp-row" data-v="budget"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Smart budgets</b> &amp; shared wallets</span></button>
-    </div>
-  </div>
-  <div class="scr-foot">
-    <button class="sp-btn" id="goalBtn" data-go="save">Continue</button>
-  </div>
+  <div class="scr-body"><div class="sp-rows" id="goalList"></div></div>
+  <div class="scr-foot"><button class="sp-btn" id="goalBtn" data-go="save" data-t="cont"></button></div>
 </section>
 
 <!-- SAVING FOR -->
@@ -629,15 +759,10 @@ a{color:inherit}
       <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
       <div class="sp-prog"><i style="width:50%"></i></div>
     </div>
-    <h2 class="sp-h">What are you<br>saving for?</h2>
+    <h2 class="sp-h" data-th="save.h"></h2>
   </div>
-  <div class="scr-body">
-    <div class="sp-save" id="saveGrid"></div>
-    <div style="height:10px"></div>
-  </div>
-  <div class="scr-foot">
-    <button class="sp-btn" data-go="banks">Continue</button>
-  </div>
+  <div class="scr-body"><div class="sp-save" id="saveGrid"></div><div style="height:10px"></div></div>
+  <div class="scr-foot"><button class="sp-btn" data-go="banks" data-t="cont"></button></div>
 </section>
 
 <!-- BANKS -->
@@ -647,15 +772,12 @@ a{color:inherit}
       <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
       <div class="sp-prog"><i style="width:75%"></i></div>
     </div>
-    <h2 class="sp-h">Where do you keep<br>your money?</h2>
+    <h2 class="sp-h" data-th="banks.h"></h2>
   </div>
-  <div class="scr-body">
-    <div class="sp-bankpanel"><div class="sp-banks" id="bankGrid"></div></div>
-    <div style="height:10px"></div>
-  </div>
+  <div class="scr-body"><div class="sp-bankpanel"><div class="sp-banks" id="bankGrid"></div></div><div style="height:10px"></div></div>
   <div class="scr-foot">
-    <p class="sp-helper" id="bankCount">2 selected</p>
-    <button class="sp-btn" id="bankBtn" data-go="budget">Continue</button>
+    <p class="sp-helper" id="bankCount"></p>
+    <button class="sp-btn" id="bankBtn" data-go="budget" data-t="cont"></button>
   </div>
 </section>
 
@@ -666,20 +788,18 @@ a{color:inherit}
       <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
       <div class="sp-prog"><i style="width:100%"></i></div>
     </div>
-    <h2 class="sp-h">How much do you want<br>to spend a month?</h2>
-    <p class="sp-sub">Your spending budget for the month.</p>
+    <h2 class="sp-h" data-th="bud.h"></h2>
+    <p class="sp-sub" data-t="bud.sub"></p>
   </div>
   <div class="scr-body">
     <div class="sp-wheelwrap">
       <div class="sp-wheelbar"></div>
       <div class="sp-wheel" id="wheel"></div>
-      <div class="sp-unit">€ / month</div>
+      <div class="sp-unit" id="wheelUnit"></div>
     </div>
-    <p class="sp-note">You can change it any time in <b>Budgets</b>.</p>
+    <p class="sp-note" data-th="bud.note"></p>
   </div>
-  <div class="scr-foot">
-    <button class="sp-btn" data-go="loader">Set my budget</button>
-  </div>
+  <div class="scr-foot"><button class="sp-btn" data-go="loader" data-t="bud.cta"></button></div>
 </section>
 
 <!-- LOADER -->
@@ -688,7 +808,7 @@ a{color:inherit}
   <div class="scr-body">
     <div class="sp-loadwrap">
       <svg class="sp-spin" viewBox="0 0 120 120" id="spin"></svg>
-      <h2 class="sp-load-h">Setting up your Spendee…</h2>
+      <h2 class="sp-load-h" data-t="load.h"></h2>
       <div class="sp-lsteps" id="loadSteps">
         <div class="sp-ls"><span class="d"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">—</span></div>
         <div class="sp-ls"><span class="d"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">—</span></div>
@@ -708,63 +828,84 @@ a{color:inherit}
     <div class="sp-nav">
       <button class="sp-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
     </div>
-    <h2 class="sp-h" style="margin-top:14px">Your budget is ready</h2>
+    <h2 class="sp-h" style="margin-top:12px" data-t="po.h"></h2>
   </div>
   <div class="scr-body">
     <div class="sp-paycard">
       <div class="sp-ring">
         <svg viewBox="0 0 120 120" id="ring"></svg>
-        <div class="c"><b id="perDay">26,67 €</b><span>to spend a day</span></div>
+        <div class="c"><b id="perDay"></b><span data-t="po.perday"></span></div>
       </div>
-      <p class="sp-paymeta" id="payMeta"><b>800 €</b> a month ÷ 30 days in September</p>
+      <p class="sp-paymeta" id="payMeta"></p>
     </div>
-    <div class="sp-goalrow" id="payGoal"><img id="payGoalImg" src="img/goal-car.jpg" alt=""><div><b id="payGoalT">Saving for a new car</b>Your budget keeps it on track, month by month.</div></div>
-    <div class="sp-lab" id="bankLab">Ready to connect</div>
+    <div id="payGoal">
+      <div class="sp-goalrow"><img id="payGoalImg" src="img/goal-car.jpg" alt=""><div><b id="payGoalT"></b><span id="payReady"></span></div></div>
+      <div class="sp-tgt">
+        <div class="sp-step"><div><small data-t="po.target"></small><b id="tgtVal"></b></div><div class="pm"><button id="tgtMinus" aria-label="Less">−</button><button id="tgtPlus" aria-label="More">+</button></div></div>
+        <div class="sp-step"><div><small data-t="po.monthly"></small><b id="monVal"></b></div><div class="pm"><button id="monMinus" aria-label="Less">−</button><button id="monPlus" aria-label="More">+</button></div></div>
+      </div>
+    </div>
+    <div class="sp-lab" id="bankLab"></div>
     <div class="sp-minis" id="payBanks"></div>
     <div class="sp-lock">
       <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-      <div><b>Bank sync is in Premium</b>Free Spendee Basic covers 1 cash wallet and 1 budget.</div>
+      <div><b data-t="po.lockT"></b><span data-t="po.lockD"></span></div>
     </div>
     <div style="height:12px"></div>
   </div>
-  <div class="scr-foot">
-    <button class="sp-btn" data-go="paywall">Continue</button>
-  </div>
+  <div class="scr-foot"><button class="sp-btn" data-go="paywall" data-t="cont"></button></div>
 </section>
 
 <!-- PAYWALL -->
 <section class="scr scr--pay" data-id="paywall">
   <div class="sp-paybg"></div>
   <div class="sp-payphoto" id="payPhoto"><img id="payPhotoImg" src="img/goal-car.jpg" alt=""></div>
-  <span class="sp-paygoal" id="payGoalPill">Saving for a new car</span>
+  <span class="sp-paygoal" id="payGoalPill"></span>
   <div class="sp-fx" id="fxPay"></div>
   <div class="scr-top">
     <button class="sp-x" id="payClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     <svg class="sp-donut" viewBox="0 0 120 120" id="donutMark"></svg>
-    <h2 class="sp-payh" id="payH">Take Control of Your 800 € Budget – Instantly!</h2>
-    <p class="sp-paysub" id="paySub">Start now for 39,99 € per year</p>
+    <h2 class="sp-payh" id="payH"></h2>
+    <p class="sp-paysub" id="paySub"></p>
   </div>
   <div class="scr-body">
-    <div class="sp-proofcard"><img class="sp-proofimg" src="img/proof.png" alt="Forbes Best Budgeting App · 4.8 App Store · Top 10 Finance app"></div>
+    <div class="sp-proofcard"><img class="sp-proofimg" src="img/proof-a.png" alt="Forbes Best Budgeting App · 4.8 App Store · Top 10 Finance app"></div>
     <div class="sp-feat" id="featList"></div>
     <div class="sp-plans" id="planList">
       <button class="sp-plan" data-v="year">
-        <span class="sp-badge"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>Best value · save 52%</span>
-        <span><span class="t">Yearly</span><span class="s"><em>3,33 € / month</em>, billed 39,99 € a year</span></span>
+        <span class="sp-badge"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg><span data-t="pw.badgeY"></span></span>
+        <span><span class="t" data-t="pw.year"></span><span class="s" data-th="pw.yearS"></span></span>
         <span class="sp-radio"><i></i></span>
       </button>
       <button class="sp-plan" data-v="month">
-        <span class="sp-badge"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>7 days free</span>
-        <span><span class="t">Monthly</span><span class="s"><em>7 days free</em>, 6,99 € / month</span></span>
+        <span class="sp-badge"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg><span data-t="pw.free7"></span></span>
+        <span><span class="t" data-t="pw.month"></span><span class="s" data-th="pw.monthS"></span></span>
         <span class="sp-radio"><i></i></span>
       </button>
     </div>
     <div style="height:6px"></div>
   </div>
   <div class="scr-foot">
-    <p class="sp-trust" id="payTrust">Billed 39,99 € today · cancel anytime in Settings</p>
-    <button class="sp-btn" id="payCta">Start Now – 39,99 € / year</button>
-    <div class="sp-legal"><a>Terms of Use</a><a>Privacy Policy</a><a>Restore</a></div>
+    <p class="sp-trust" id="payTrust"></p>
+    <button class="sp-btn" id="payCta"></button>
+    <div class="sp-legal"><a data-t="lg.terms"></a><a data-t="lg.priv"></a><a data-t="lg.rest"></a></div>
+  </div>
+</section>
+
+<!-- MONTHLY SHEET (today's version only) -->
+<section class="scr sp-ov" data-id="sheet" data-overlay="1">
+  <div class="sp-dim" data-back></div>
+  <div class="sp-sheet">
+    <div class="sp-handle"></div>
+    <h3 class="sp-sh-h" data-t="sh.h"></h3>
+    <p class="sp-sh-s" data-t="pw.subM"></p>
+    <div class="sp-plan on" style="margin-top:32px">
+      <span class="sp-badge"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg><span data-t="pw.free7"></span></span>
+      <span><span class="t" data-t="pw.month"></span><span class="s" data-th="pw.monthS"></span></span>
+      <span class="sp-radio"><i></i></span>
+    </div>
+    <button class="sp-btn" id="sheetCta" style="margin-top:26px" data-t="pw.ctaM"></button>
+    <button class="sp-ghost" id="sheetNo" data-t="sh.no"></button>
   </div>
 </section>
 
@@ -773,64 +914,141 @@ a{color:inherit}
   <div class="sp-fx" id="fxOffer"></div>
   <div class="scr-top" style="padding-top:0">
     <button class="sp-x" id="offClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <h2 class="sp-oh" style="margin-top:118px">Limited Time Offer</h2>
+    <h2 class="sp-oh" style="margin-top:118px" data-t="of.h"></h2>
   </div>
   <div class="scr-body">
     <div class="sp-ocard">
-      <img src="img/gift.png" alt="">
-      <div class="sp-off">20% OFF</div>
-      <p class="sp-ol">Spendee Premium only €2.50/month<br>Billed annually at 29,99 € <s>39,99 €</s></p>
-      <span class="sp-ends"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Offer ends soon</span>
+      <img src="img/gift-a.png" alt="">
+      <div class="sp-off" data-t="of.off"></div>
+      <p class="sp-ol"><span data-t="of.l1"></span><br><span data-th="of.l2"></span></p>
+      <span class="sp-ends"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-t="of.ends"></span></span>
       <div class="sp-cd">
-        <div><b>0</b><span>Days</span></div>
-        <div><b>0</b><span>Hours</span></div>
-        <div><b id="cdM">05</b><span>Min</span></div>
-        <div><b id="cdS">00</b><span>Sec</span></div>
+        <div><b>0</b><span data-t="of.d"></span></div>
+        <div><b>0</b><span data-t="of.hr"></span></div>
+        <div><b id="cdM">05</b><span data-t="of.m"></span></div>
+        <div><b id="cdS">00</b><span data-t="of.s"></span></div>
       </div>
     </div>
   </div>
-  <div class="scr-foot">
-    <button class="sp-btn" id="offerCta">Claim Offer Now</button>
-  </div>
+  <div class="scr-foot"><button class="sp-btn" id="offerCta" data-t="of.cta"></button></div>
 </section>
 
 <!-- CONNECT -->
 <section class="scr" data-id="connect">
   <div class="scr-top">
-    <h2 class="sp-h" style="margin-top:34px">Connect your first bank</h2>
-    <p class="sp-sub">Your transactions come in and sort themselves into categories.</p>
+    <h2 class="sp-h" style="margin-top:34px" data-t="cn.h"></h2>
+    <p class="sp-sub" data-t="cn.sub"></p>
   </div>
-  <div class="scr-body">
-    <div class="sp-conn" id="connList"></div>
-  </div>
+  <div class="scr-body"><div class="sp-conn" id="connList"></div></div>
   <div class="scr-foot">
-    <button class="sp-btn" id="connCta" data-go="welcome">Connect Revolut</button>
-    <button class="sp-ghost" data-go="welcome">Add a cash wallet instead</button>
+    <button class="sp-btn" id="connCta" data-go="welcome"></button>
+    <button class="sp-ghost" data-go="welcome" data-t="cn.ghost"></button>
   </div>
 </section>
 
         </div>
       </div>
     </div>
+    <div class="demo-cap hidden" id="demoCap"><div class="bar"><i id="demoProg"></i></div><p id="demoTxt"></p><button id="demoStop">Stop</button></div>
     <div class="chips" id="chips"></div>
     <p class="chiphint">Jump to any screen — answers already filled in.</p>
+    <div class="qr"><img src="img/qr.svg" alt="QR code for this prototype"><span><b>Open it on your phone</b>Scan to try the flow in your hand.</span></div>
   </div>
   <div class="panelcol"><div class="pn" id="panel"></div></div>
 </div>
 </div><!-- /view-proto -->
 
 <script>
-/* ---- state, pre-filled so every jump lands warm ---- */
-var S = { goals:['banks','budget'], save:'car', banks:['revolut','ing'], budget:800, plan:'year' };
+/* ================= copy, per language (phone screens only) ================= */
+var LANGS = ['en','cs','de'];
+var T = {
+ 'wel.h':   ["We've been helping with money for 11 years","S penězi pomáháme už 11 let","Wir helfen seit 11 Jahren beim Thema Geld"],
+ 'wel.cta': ["Get Started","Začít","Los geht's"],
+ 'wel.signin':["Have an account? <b>Sign In</b>","Máte účet? <b>Přihlásit se</b>","Schon ein Konto? <b>Anmelden</b>"],
+ 'cont':    ["Continue","Pokračovat","Weiter"],
+ 'goal.h':  ["What do you want to<br>get on top of?","Co chcete mít<br>pod kontrolou?","Was willst du<br>in den Griff bekommen?"],
+ 'goal.sub':["Pick all that apply.","Vyberte vše, co platí.","Wähle alles, was passt."],
+ 'save.h':  ["What are you<br>saving for?","Na co<br>spoříte?","Wofür<br>sparst du?"],
+ 'banks.h': ["Where do you keep<br>your money?","Kde máte<br>své peníze?","Wo liegt<br>dein Geld?"],
+ 'banks.n': ["{n} selected","Vybráno: {n}","{n} ausgewählt"],
+ 'banks.0': ["Pick at least one","Vyberte alespoň jednu","Wähle mindestens eine"],
+ 'cash':    ["Cash only","Jen hotovost","Nur Bargeld"],
+ 'bud.h':   ["How much do you want<br>to spend a month?","Kolik chcete<br>měsíčně utratit?","Wie viel willst du<br>im Monat ausgeben?"],
+ 'bud.sub': ["Your spending budget for the month.","Váš měsíční rozpočet na útratu.","Dein Ausgabenbudget für den Monat."],
+ 'bud.unit':["{c} / month","{c} / měsíc","{c} / Monat"],
+ 'bud.note':["You can change it any time in <b>Budgets</b>.","Kdykoli ho změníte v sekci <b>Rozpočty</b>.","Du kannst es jederzeit unter <b>Budgets</b> ändern."],
+ 'bud.cta': ["Set my budget","Nastavit rozpočet","Budget festlegen"],
+ 'load.h':  ["Setting up your Spendee…","Připravuji váš Spendee…","Dein Spendee wird eingerichtet…"],
+ 'load.b':  ["Creating your {b} monthly budget","Vytvářím měsíční rozpočet {b}","Monatsbudget von {b} wird erstellt"],
+ 'load.k':  ["Lining up {x} for sync","Připravuji synchronizaci: {x}","Sync wird vorbereitet: {x}"],
+ 'load.c':  ["Setting up your cash wallet","Zakládám hotovostní peněženku","Bargeld-Wallet wird angelegt"],
+ 'load.f':  ["Putting {x} first","Upřednostňuji {x}","Zuerst: {x}"],
+ 'and':     [" and "," a "," und "],
+ 'po.h':    ["Your budget is ready","Rozpočet je připraven","Dein Budget ist fertig"],
+ 'po.perday':["to spend a day","na den","pro Tag"],
+ 'po.meta': ["<b>{b}</b> a month ÷ {d} days in {m}","<b>{b}</b> měsíčně ÷ {d} dní v tomto měsíci","<b>{b}</b> im Monat ÷ {d} Tage im {m}"],
+ 'po.target':["Target","Cíl","Ziel"],
+ 'po.monthly':["Put aside / month","Měsíčně","Zurücklegen / Monat"],
+ 'po.ready':["Ready by <b>{d}</b> · {n} months","Hotovo do <b>{d}</b> · {n} měs.","Erreicht bis <b>{d}</b> · {n} Monate"],
+ 'po.conn': ["Ready to connect","Připraveno k propojení","Bereit zum Verbinden"],
+ 'po.wallet':["Your wallet","Vaše peněženka","Dein Wallet"],
+ 'po.cashw':["Cash wallet","Hotovost","Bargeld"],
+ 'po.lockT':["Bank sync is in Premium","Synchronizace bank je v Premium","Bank-Sync gibt es mit Premium"],
+ 'po.lockD':["Free Spendee Basic covers 1 cash wallet and 1 budget.","Bezplatný Spendee Basic zahrnuje 1 hotovostní peněženku a 1 rozpočet.","Das kostenlose Spendee Basic umfasst 1 Bargeld-Wallet und 1 Budget."],
+ 'pw.hB':   ["Take Control of Your {b} Budget – Instantly!","Rozpočet {b} pod kontrolou – hned!","Dein {b}-Budget im Griff – sofort!"],
+ 'pw.hA':   ["Take Control of Your Money – Instantly!","Převezměte kontrolu nad svými penězi – hned!","Dein Geld im Griff – sofort!"],
+ 'pw.subY': ["Start now for 39,99 € per year","Začněte hned za 39,99 € ročně","Jetzt starten für 39,99 € pro Jahr"],
+ 'pw.subM': ["7 days free, then just 6,99 € per month","7 dní zdarma, pak jen 6,99 € měsíčně","7 Tage gratis, dann nur 6,99 € pro Monat"],
+ 'pw.year': ["Yearly","Ročně","Jährlich"],
+ 'pw.yearS':["<em>3,33 € / month</em>, billed 39,99 € a year","<em>3,33 € / měsíc</em>, 39,99 € ročně","<em>3,33 € / Monat</em>, jährlich 39,99 €"],
+ 'pw.badgeY':["Best value · save 52%","Nejvýhodnější · ušetříte 52 %","Bester Preis · 52 % sparen"],
+ 'pw.month':["Monthly","Měsíčně","Monatlich"],
+ 'pw.monthS':["<em>7 days free</em>, 6,99 € / month","<em>7 dní zdarma</em>, 6,99 € / měsíc","<em>7 Tage gratis</em>, 6,99 € / Monat"],
+ 'pw.free7':["7 days free","7 dní zdarma","7 Tage gratis"],
+ 'pw.trY':  ["Billed 39,99 € today · cancel anytime in Settings","Dnes zaplatíte 39,99 € · zrušit můžete kdykoli","Heute 39,99 € · jederzeit kündbar"],
+ 'pw.trM':  ["Nothing today · cancel anytime in Settings","Dnes nic neplatíte · zrušit můžete kdykoli","Heute nichts · jederzeit kündbar"],
+ 'pw.ctaY': ["Start Now – 39,99 € / year","Začít – 39,99 € / rok","Jetzt starten – 39,99 € / Jahr"],
+ 'pw.ctaM': ["Start Today for Free","Začít dnes zdarma","Heute gratis starten"],
+ 'lg.terms':["Terms of Use","Podmínky","Nutzungsbedingungen"],
+ 'lg.priv': ["Privacy Policy","Soukromí","Datenschutz"],
+ 'lg.rest': ["Restore","Obnovit","Wiederherstellen"],
+ 'sh.h':    ["Not ready for a year?","Nechcete hned na rok?","Noch nicht bereit für ein Jahr?"],
+ 'sh.no':   ["No thanks","Ne, děkuji","Nein, danke"],
+ 'of.h':    ["Limited Time Offer","Časově omezená nabídka","Zeitlich begrenztes Angebot"],
+ 'of.off':  ["20% OFF","−20 %","−20 %"],
+ 'of.l1':   ["Spendee Premium only €2.50/month","Spendee Premium jen za 2,50 €/měsíc","Spendee Premium nur 2,50 €/Monat"],
+ 'of.l2':   ["Billed annually at 29,99 € <s>39,99 €</s>","Účtováno ročně 29,99 € <s>39,99 €</s>","Jährlich 29,99 € <s>39,99 €</s>"],
+ 'of.ends': ["Offer ends soon","Nabídka brzy končí","Angebot endet bald"],
+ 'of.d':    ["Days","Dny","Tage"], 'of.hr':["Hours","Hodiny","Std."], 'of.m':["Min","Min","Min"], 'of.s':["Sec","Sek","Sek"],
+ 'of.cta':  ["Claim Offer Now","Využít nabídku","Angebot sichern"],
+ 'cn.h':    ["Connect your first bank","Propojte první banku","Verbinde deine erste Bank"],
+ 'cn.sub':  ["Your transactions come in and sort themselves into categories.","Transakce se načtou a samy roztřídí do kategorií.","Deine Umsätze kommen rein und sortieren sich selbst in Kategorien."],
+ 'cn.conn': ["Connect","Propojit","Verbinden"], 'cn.add':["Add","Přidat","Hinzufügen"],
+ 'cn.cta':  ["Connect {x}","Propojit {x}","{x} verbinden"],
+ 'cn.cash': ["Add my cash wallet","Přidat hotovost","Bargeld-Wallet anlegen"],
+ 'cn.ghost':["Add a cash wallet instead","Radši přidat hotovost","Lieber Bargeld-Wallet anlegen"]
+};
+var GOALS = {
+  banks:   {h:['Connect your <b>banks, cash &amp; investments</b>','Propojte <b>banky, hotovost a investice</b>','Verbinde <b>Banken, Bargeld &amp; Investments</b>'], s:['bank sync','synchronizaci bank','Bank-Sync']},
+  networth:{h:['See your <b>net worth</b> in one place','Celé <b>jmění</b> na jednom místě','Dein <b>Vermögen</b> auf einen Blick'], s:['net worth','přehled jmění','Vermögen']},
+  track:   {h:['<b>Auto-track</b> spending, income &amp; subscriptions','<b>Automaticky</b> výdaje, příjmy a předplatné','<b>Automatisch erfasst:</b> Ausgaben, Einnahmen &amp; Abos'], s:['auto-tracking','automatické sledování','Auto-Tracking']},
+  budget:  {h:['<b>Smart budgets</b> &amp; shared wallets','<b>Chytré rozpočty</b> a sdílené peněženky','<b>Smarte Budgets</b> &amp; geteilte Wallets'], s:['budgets','rozpočty','Budgets']}
+};
+var GOAL_ORDER = ['banks','networth','track','budget'];
 var SAVE = [
-  {k:'car',        l:'New car',         n:'a new car',        img:'img/goal-car.jpg', pos:'50% 85%'},
-  {k:'vacation',   l:'Dream vacation',  n:'a dream vacation', img:'img/goal-vacation.jpg', pos:'50% 55%'},
-  {k:'university', l:'University',      n:'university',       img:'img/goal-university.jpg', pos:'50% 45%'},
-  {k:'home',       l:'A home',          n:'a home',           img:'img/goal-home.jpg', pos:'50% 35%'},
-  {k:'emergency',  l:'Emergency fund',  n:'an emergency fund',img:'img/goal-emergency.jpg', pos:'50% 60%'},
-  {k:'none',       l:'Nothing specific yet', n:''}
+  {k:'car',       img:'img/goal-car.jpg',       pos:'50% 85%', tgt:[25000,1000], l:['New car','Nové auto','Neues Auto'],               p:['Saving for a new car','Spořím na nové auto','Sparen für ein neues Auto'],           ld:['Making room for a new car','Přidávám cíl: nové auto','Ziel eingeplant: neues Auto']},
+  {k:'vacation',  img:'img/goal-vacation.jpg',  pos:'50% 55%', tgt:[3000,250],   l:['Dream vacation','Dovolená snů','Traumurlaub'],     p:['Saving for a dream vacation','Spořím na dovolenou snů','Sparen für den Traumurlaub'], ld:['Making room for a dream vacation','Přidávám cíl: dovolená snů','Ziel eingeplant: Traumurlaub']},
+  {k:'university',img:'img/goal-university.jpg',pos:'50% 45%',tgt:[10000,1000], l:['University','Vysoká škola','Studium'],            p:['Saving for university','Spořím na vysokou školu','Sparen fürs Studium'],            ld:['Making room for university','Přidávám cíl: vysoká škola','Ziel eingeplant: Studium']},
+  {k:'home',      img:'img/goal-home.jpg',      pos:'50% 35%', tgt:[40000,5000], l:['A home','Vlastní bydlení','Eigenheim'],             p:['Saving for a home','Spořím na vlastní bydlení','Sparen fürs Eigenheim'],             ld:['Making room for a home','Přidávám cíl: vlastní bydlení','Ziel eingeplant: Eigenheim']},
+  {k:'emergency', img:'img/goal-emergency.jpg', pos:'50% 60%', tgt:[0,500],      l:['Emergency fund','Finanční rezerva','Notgroschen'],  p:['Saving for an emergency fund','Spořím na finanční rezervu','Sparen für den Notgroschen'], ld:['Making room for an emergency fund','Přidávám cíl: finanční rezerva','Ziel eingeplant: Notgroschen']},
+  {k:'none',      l:['Nothing specific yet','Zatím nic konkrétního','Noch nichts Bestimmtes']}
 ];
 var SAVEK = {}; SAVE.forEach(function(g){ SAVEK[g.k]=g; });
+var CUR = {
+  EUR:{sym:'€', wmin:200,  wmax:3000,  wstep:100,  budget:800,   monthly:300,  mstep:50,  mul:1},
+  CZK:{sym:'Kč',wmin:5000, wmax:75000, wstep:1000, budget:20000, monthly:7500, mstep:500, mul:25}
+};
+var LOCALE = {en:'en-GB', cs:'cs-CZ', de:'de-DE'};
 var BANKS = [
   {k:'revolut',n:'Revolut',img:'img/revolut.png'}, {k:'ing',n:'ING',img:'img/ing.png'},
   {k:'paypal',n:'PayPal',img:'img/paypal.png'}, {k:'deutsche',n:'Deutsche Bank',img:'img/deutsche.png'},
@@ -838,44 +1056,48 @@ var BANKS = [
   {k:'mbank',n:'mBank',img:'img/mbank.png'}, {k:'ceska',n:'Česká spořitelna',img:'img/ceska.png'},
   {k:'chase',n:'Chase',img:'img/chase.png'}, {k:'inbank',n:'Inbank',img:'img/inbank.png'},
   {k:'bofa',n:'Bank of America',img:'img/bofa.png',wide:true},
-  {k:'cash',n:'Cash only',txt:true,wide:true}
+  {k:'cash',txt:true,wide:true}
 ];
 var BANK = {}; BANKS.forEach(function(b){ BANK[b.k]=b; });
-var GOALS = {
-  banks:   {h:'Connect your <b>banks, cash &amp; investments</b>', s:'bank sync'},
-  networth:{h:'See your <b>net worth</b> in one place', s:'net worth'},
-  track:   {h:'<b>Auto-track</b> spending, income &amp; subscriptions', s:'auto-tracking'},
-  budget:  {h:'<b>Smart budgets</b> &amp; shared wallets', s:'budgets'}
-};
-var GOAL_ORDER = ['banks','networth','track','budget'];
 var QUOTES = [
   ['The app works intuitively, it makes it super easy to control your money. It helps me to develop healthy spending habits.','Roy'],
   ['I am using this app for more than two years and I could not be happier with the service I got.','Marek'],
   ['I’ve tried other money tracking apps before Spendee, but I choose to stick to this because of its simplicity and intuitive design.','Harnet'],
   ['The fact that it is cross-platform has made my life easier. I am always in control with my finances.','Paolo']
 ];
-var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var DONUT = ['#E8B53A','#D5528C','#2E9E5B','#D2424A','#2F9CD6'];
 
-function eur(n,dec){ var s = dec ? n.toFixed(2).replace('.',',') : String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); return s+' €'; }
-function joinNames(a){ return a.length<2 ? (a[0]||'') : a.slice(0,-1).join(', ')+' and '+a[a.length-1]; }
+/* ================= state ================= */
+function defaults(){ return { lang:S0.lang, theme:S0.theme, variant:'b', goals:['banks','budget'], save:'car', banks:['revolut','ing'],
+  budget:800, target:25000, monthly:300, plan:'year' }; }
+var S0 = {lang:'en', theme:'light'};
+var S = defaults();
+function L(){ return LANGS.indexOf(S.lang); }
+function cc(){ return S.lang==='cs' ? 'CZK' : 'EUR'; }
+function C(){ return CUR[cc()]; }
+function t(k,v){ var s=(T[k]||[k])[L()]; if(v) Object.keys(v).forEach(function(x){ s=s.split('{'+x+'}').join(v[x]); }); return s; }
+function num(n,dec){ var sep=S.lang==='cs'?' ':'.'; var p=(dec?n.toFixed(2):String(Math.round(n))).split('.');
+  return p[0].replace(/\B(?=(\d{3})+(?!\d))/g,sep)+(p[1]?','+p[1]:''); }
+function money(n,dec){ return num(n, dec && cc()==='EUR')+' '+C().sym; }
+function joinL(a){ return a.length<2 ? (a[0]||'') : a.slice(0,-1).join(', ')+t('and')+a[a.length-1]; }
 function realBanks(){ return S.banks.filter(function(k){ return k!=='cash'; }); }
+function snap(v,step){ return Math.max(step, Math.round(v/step)*step); }
+function tgtStep(){ return SAVEK[S.save].tgt ? SAVEK[S.save].tgt[1]*C().mul : 1000; }
+function defaultTarget(k){ var g=SAVEK[k]; if(!g.tgt) return 0; if(k==='emergency') return snap(S.budget*3, g.tgt[1]*C().mul); return g.tgt[0]*C().mul; }
 
-/* ---- donut marks (their logo, redrawn) ---- */
+/* ================= marks ================= */
 function donutSVG(el, r, w, center){
-  var C=2*Math.PI*r, seg=C/5, h='';
-  DONUT.forEach(function(c,i){ h+='<circle cx="60" cy="60" r="'+r+'" fill="none" stroke="'+c+'" stroke-width="'+w+'" stroke-dasharray="'+(seg-1.5)+' '+(C-seg+1.5)+'" stroke-dashoffset="'+(-i*seg)+'" transform="rotate(-90 60 60)"/>'; });
+  var Cf=2*Math.PI*r, seg=Cf/5, h='';
+  DONUT.forEach(function(c,i){ h+='<circle cx="60" cy="60" r="'+r+'" fill="none" stroke="'+c+'" stroke-width="'+w+'" stroke-dasharray="'+(seg-1.5)+' '+(Cf-seg+1.5)+'" stroke-dashoffset="'+(-i*seg)+'" transform="rotate(-90 60 60)"/>'; });
   if(center){ h+='<circle cx="60" cy="60" r="'+(r-w/2-1)+'" fill="#E5E7E9"/><text x="60" y="75" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="44" fill="#3A4047">$</text>'; }
   el.innerHTML=h;
 }
 donutSVG(document.getElementById('donutMark'),46,26,true);
 donutSVG(document.getElementById('navLogo'),46,26,true);
 donutSVG(document.getElementById('spin'),48,14,false);
-(function(){ var r=52,C=2*Math.PI*r,seg=C/5,h='<circle cx="60" cy="60" r="52" fill="none" stroke="#EEF0F1" stroke-width="10"/>';
-  DONUT.forEach(function(c,i){ h+='<circle cx="60" cy="60" r="52" fill="none" stroke="'+c+'" stroke-width="10" stroke-dasharray="'+(seg-3)+' '+(C-seg+3)+'" stroke-dashoffset="'+(-i*seg)+'"/>'; });
+(function(){ var r=52,Cf=2*Math.PI*r,seg=Cf/5,h='<circle cx="60" cy="60" r="52" fill="none" stroke="#EEF0F1" stroke-width="10" class="ringbg"/>';
+  DONUT.forEach(function(c,i){ h+='<circle cx="60" cy="60" r="52" fill="none" stroke="'+c+'" stroke-width="10" stroke-dasharray="'+(seg-3)+' '+(Cf-seg+3)+'" stroke-dashoffset="'+(-i*seg)+'"/>'; });
   document.getElementById('ring').innerHTML=h; })();
-
-/* ---- confetti, their orange and blue ---- */
 function confetti(id, bits){
   var el=document.getElementById(id), h='';
   bits.forEach(function(b){ h+='<i style="left:'+b[0]+'%;top:'+b[1]+'%;width:'+b[2]+'px;height:'+b[3]+'px;background:'+b[4]+';transform:rotate('+b[5]+'deg);opacity:'+(b[6]||1)+'"></i>'; });
@@ -883,103 +1105,129 @@ function confetti(id, bits){
 }
 var O='var(--sp-conf-o)', Bl='var(--sp-conf-b)';
 confetti('fxOffer',[[4,1,22,16,O,-14],[29,0,12,10,Bl,8],[58,14,18,20,O,10],[57,26,3,14,Bl,-25],[33,23,20,18,O,24],[87,40,12,14,'#FAD9B4',8],[1,48,10,20,Bl,0],[0,70,12,4,Bl,-8],[28,57,16,14,'#DDE6F5',30],[60,79,18,16,Bl,40],[55,86,4,22,O,-50],[4,88,3,16,Bl,-55],[84,90,3,14,O,-50],[16,96,22,8,Bl,-4],[36,96,12,26,Bl,-30],[70,96,8,18,Bl,-30]]);
-confetti('fxPay',[[55,10,18,12,'#9DB3D6',24,.6],[57,17,20,20,'#E8B98E',10,.55],[86,42,12,14,'#E8B98E',8,.5],[85,55,16,6,'#E8B98E',-10,.5],[26,57,14,10,'#C9D3E6',30,.5]]);
+confetti('fxPay',[[86,42,12,14,'#E8B98E',8,.5],[85,55,16,6,'#E8B98E',-10,.5]]);
 
-/* ---- saving-for grid ---- */
-(function(){ var g=document.getElementById('saveGrid'), tick='<span class="sp-tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>';
+/* ================= builders (re-run on language change) ================= */
+var tick='<span class="sp-tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>';
+var ck='<span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>';
+function buildGoals(){ var g=document.getElementById('goalList'); g.innerHTML='';
+  GOAL_ORDER.forEach(function(k){ var b=document.createElement('button'); b.className='sp-row'; b.dataset.v=k;
+    b.innerHTML=ck+'<span>'+GOALS[k].h[L()]+'</span>';
+    b.addEventListener('click',function(){ var i=S.goals.indexOf(k); if(i>-1) S.goals.splice(i,1); else S.goals.push(k); syncScreen(); });
+    g.appendChild(b); }); }
+function buildSave(){ var g=document.getElementById('saveGrid'); g.innerHTML='';
   SAVE.forEach(function(o){ var el=document.createElement('button'); el.dataset.v=o.k;
-    if(o.img){ el.className='sp-stile'; el.innerHTML='<img src="'+o.img+'" alt="">'+tick+'<span class="l">'+o.l+'</span>'; }
-    else { el.className='sp-snone'; el.textContent=o.l; }
-    el.addEventListener('click',function(){ S.save=o.k; syncScreen(); });
-    g.appendChild(el); }); })();
-
-/* ---- bank grid ---- */
-(function(){ var g=document.getElementById('bankGrid'), tick='<span class="sp-tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>';
+    if(o.img){ el.className='sp-stile'; el.innerHTML='<img src="'+o.img+'" alt="">'+tick+'<span class="l">'+o.l[L()]+'</span>'; }
+    else { el.className='sp-snone'; el.textContent=o.l[L()]; }
+    el.addEventListener('click',function(){ S.save=o.k; S.target=defaultTarget(o.k); syncScreen(); });
+    g.appendChild(el); }); }
+function buildBanks(){ var g=document.getElementById('bankGrid'); g.innerHTML='';
   BANKS.forEach(function(b){ var el=document.createElement('button');
     el.className='sp-pill'+(b.wide?' wide':'')+(b.txt?' txt':''); el.dataset.v=b.k;
-    el.innerHTML=(b.txt?b.n:'<img src="'+b.img+'" alt="'+b.n+'">')+tick;
+    el.innerHTML=(b.txt?t('cash'):'<img src="'+b.img+'" alt="'+b.n+'">')+tick;
     el.addEventListener('click',function(){ var i=S.banks.indexOf(b.k); if(i>-1) S.banks.splice(i,1); else S.banks.push(b.k); syncScreen(); });
-    g.appendChild(el); }); })();
-
-/* ---- the wheel: real scroll-snap control ---- */
-var WMIN=200, WMAX=3000, WSTEP=100, IH=44, wheel=document.getElementById('wheel'), wTimer=null;
-(function(){ var h='<div class="sp-sp"></div>'; for(var v=WMIN; v<=WMAX; v+=WSTEP) h+='<div class="sp-it">'+String(v).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+'</div>'; h+='<div class="sp-sp"></div>'; wheel.innerHTML=h; })();
+    g.appendChild(el); }); }
+var IH=44, wheel=document.getElementById('wheel'), wTimer=null;
+function buildWheel(){ var c=C(), h='<div class="sp-sp"></div>'; for(var v=c.wmin; v<=c.wmax; v+=c.wstep) h+='<div class="sp-it">'+num(v)+'</div>';
+  wheel.innerHTML=h+'<div class="sp-sp"></div>'; setWheel(); }
 function paintWheel(){ var idx=Math.round(wheel.scrollTop/IH); wheel.querySelectorAll('.sp-it').forEach(function(it,i){ var d=Math.abs(i-idx); it.style.opacity=d===0?1:(d===1?.45:.2); }); return idx; }
+function setWheel(){ var c=C(); wheel.scrollTop=((S.budget-c.wmin)/c.wstep)*IH; paintWheel(); }
 wheel.addEventListener('scroll',function(){ var idx=paintWheel(); clearTimeout(wTimer);
-  wTimer=setTimeout(function(){ S.budget=Math.min(WMAX,WMIN+idx*WSTEP); syncScreen(true); },120); });
-function setWheel(){ wheel.scrollTop=((S.budget-WMIN)/WSTEP)*IH; paintWheel(); }
+  wTimer=setTimeout(function(){ var c=C(), nb=Math.min(c.wmax,c.wmin+idx*c.wstep); if(nb!==S.budget){ S.budget=nb; if(S.save==='emergency') S.target=defaultTarget('emergency'); } syncScreen(true); },120); });
+function applyStatic(){
+  document.documentElement.lang=S.lang;
+  document.querySelectorAll('[data-t]').forEach(function(el){ el.textContent=t(el.dataset.t); });
+  document.querySelectorAll('[data-th]').forEach(function(el){ el.innerHTML=t(el.dataset.th); });
+  buildGoals(); buildSave(); buildBanks(); buildWheel();
+}
 
-/* ---- everything downstream reads S ---- */
+/* ================= everything downstream reads S ================= */
 function syncScreen(fromWheel){
+  var li=L(), c=C(), loc=LOCALE[S.lang];
   document.querySelectorAll('#goalList .sp-row').forEach(function(b){ b.classList.toggle('on', S.goals.indexOf(b.dataset.v)>-1); });
   document.getElementById('goalBtn').disabled=!S.goals.length;
+  document.querySelectorAll('#saveGrid [data-v]').forEach(function(b){ b.classList.toggle('on', b.dataset.v===S.save); });
   document.querySelectorAll('#bankGrid .sp-pill').forEach(function(b){ b.classList.toggle('on', S.banks.indexOf(b.dataset.v)>-1); });
-  var nb=S.banks.length; document.getElementById('bankCount').textContent = nb ? (nb+' selected') : 'Pick at least one';
+  var nb=S.banks.length; document.getElementById('bankCount').textContent = nb ? t('banks.n',{n:nb}) : t('banks.0');
   document.getElementById('bankBtn').disabled=!nb;
+  document.getElementById('wheelUnit').textContent=t('bud.unit',{c:c.sym});
   if(!fromWheel) setWheel();
 
   var now=new Date(), dim=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
   var rb=realBanks(), names=rb.map(function(k){ return BANK[k].n; });
-  var gs=GOAL_ORDER.filter(function(k){ return S.goals.indexOf(k)>-1; }).map(function(k){ return GOALS[k].s; });
-
-  document.querySelectorAll('#saveGrid [data-v]').forEach(function(b){ b.classList.toggle('on', b.dataset.v===S.save); });
+  var gs=GOAL_ORDER.filter(function(k){ return S.goals.indexOf(k)>-1; }).map(function(k){ return GOALS[k].s[li]; });
   var sg=SAVEK[S.save], hasGoal=!!sg.img;
-  document.getElementById('lsSave').classList.toggle('hidden',!hasGoal);
-  document.getElementById('payGoal').classList.toggle('hidden',!hasGoal);
-  document.getElementById('payPhoto').classList.toggle('hidden',!hasGoal);
-  document.getElementById('payGoalPill').classList.toggle('hidden',!hasGoal);
-  scr.paywall.classList.toggle('has-photo',hasGoal);
-  if(hasGoal){
-    document.querySelector('#lsSave .t').textContent='Making room for '+sg.n;
-    document.getElementById('payGoalImg').src=sg.img;
-    document.getElementById('payGoalT').textContent='Saving for '+sg.n;
-    document.getElementById('payPhotoImg').src=sg.img; document.getElementById('payPhotoImg').style.objectPosition=sg.pos;
-    document.getElementById('payGoalPill').textContent='Saving for '+sg.n;
-  }
-  var st=document.querySelectorAll('#loadSteps .sp-ls .t');
-  st[0].textContent='Creating your '+eur(S.budget)+' monthly budget';
-  st[1].textContent= rb.length ? ('Lining up '+joinNames(names)+' for sync') : 'Setting up your cash wallet';
-  st[2].textContent='Putting '+joinNames(gs)+' first';
 
-  document.getElementById('perDay').textContent=eur(S.budget/dim,true);
-  document.getElementById('payMeta').innerHTML='<b>'+eur(S.budget)+'</b> a month ÷ '+dim+' days in '+MONTHS[now.getMonth()];
+  var st=document.querySelectorAll('#loadSteps .sp-ls .t');
+  st[0].textContent=t('load.b',{b:money(S.budget)});
+  st[1].textContent= rb.length ? t('load.k',{x:joinL(names)}) : t('load.c');
+  st[2].textContent=t('load.f',{x:joinL(gs)});
+  document.getElementById('lsSave').classList.toggle('hidden',!hasGoal);
+  if(hasGoal) st[3].textContent=sg.ld[li];
+
+  document.getElementById('perDay').textContent=money(S.budget/dim,true);
+  document.getElementById('payMeta').innerHTML=t('po.meta',{b:money(S.budget),d:dim,m:new Intl.DateTimeFormat(loc,{month:'long'}).format(now)});
+  var months=0, readyShort='';
+  document.getElementById('payGoal').classList.toggle('hidden',!hasGoal);
+  if(hasGoal){
+    months=Math.max(1,Math.ceil(S.target/S.monthly));
+    var rd=new Date(now.getFullYear(),now.getMonth()+months,1);
+    var longF = S.lang==='cs' ? {month:'numeric',year:'numeric'} : {month:'long',year:'numeric'};
+    var shortF= S.lang==='cs' ? {month:'numeric',year:'numeric'} : {month:'short',year:'numeric'};
+    readyShort=new Intl.DateTimeFormat(loc,shortF).format(rd);
+    document.getElementById('payGoalImg').src=sg.img;
+    document.getElementById('payGoalT').textContent=sg.p[li];
+    document.getElementById('payReady').innerHTML=t('po.ready',{d:new Intl.DateTimeFormat(loc,longF).format(rd),n:months});
+    document.getElementById('tgtVal').textContent=money(S.target);
+    document.getElementById('monVal').textContent=money(S.monthly);
+  }
   var pb=document.getElementById('payBanks'); pb.innerHTML='';
   S.banks.forEach(function(k){ var b=BANK[k], d=document.createElement('span'); d.className='sp-mini';
-    d.innerHTML=b.txt?'Cash wallet':'<img src="'+b.img+'" alt="'+b.n+'">'; pb.appendChild(d); });
-  document.getElementById('bankLab').textContent = rb.length ? 'Ready to connect' : 'Your wallet';
+    d.innerHTML=b.txt?t('po.cashw'):'<img src="'+b.img+'" alt="'+b.n+'">'; pb.appendChild(d); });
+  document.getElementById('bankLab').textContent = rb.length ? t('po.conn') : t('po.wallet');
 
-  document.getElementById('payH').textContent='Take Control of Your '+eur(S.budget)+' Budget – Instantly!';
-  var fl=document.getElementById('featList'), ord=S.goals.filter(function(k){return GOAL_ORDER.indexOf(k)>-1;}).sort(function(a,b){return GOAL_ORDER.indexOf(a)-GOAL_ORDER.indexOf(b);});
+  /* paywall: proposed (B) or today (A) */
+  var A=S.variant==='a', P=scr.paywall;
+  P.classList.toggle('var-a',A);
+  var photo=hasGoal && !A;
+  P.classList.toggle('has-photo',photo);
+  document.getElementById('payPhoto').classList.toggle('hidden',!photo);
+  document.getElementById('payGoalPill').classList.toggle('hidden',!photo);
+  if(photo){ var im=document.getElementById('payPhotoImg'); im.src=sg.img; im.style.objectPosition=sg.pos;
+    document.getElementById('payGoalPill').textContent=sg.p[li]+' · '+readyShort; }
+  document.getElementById('payH').textContent = A ? t('pw.hA') : t('pw.hB',{b:money(S.budget)});
+  var fl=document.getElementById('featList'), ord=A ? GOAL_ORDER.slice() : GOAL_ORDER.filter(function(k){ return S.goals.indexOf(k)>-1; });
   GOAL_ORDER.forEach(function(k){ if(ord.indexOf(k)<0) ord.push(k); });
-  fl.innerHTML=ord.map(function(k){ return '<div class="sp-f"><span class="sp-ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>'+GOALS[k].h+'</span></div>'; }).join('');
+  fl.innerHTML=ord.map(function(k){ return '<div class="sp-f">'+ck+'<span>'+GOALS[k].h[li]+'</span></div>'; }).join('');
   document.querySelectorAll('#planList .sp-plan').forEach(function(b){ b.classList.toggle('on', b.dataset.v===S.plan); });
-  var yr=S.plan==='year';
-  document.getElementById('paySub').textContent = yr ? 'Start now for 39,99 € per year' : '7 days free, then just 6,99 € per month';
-  document.getElementById('payTrust').textContent = yr ? 'Billed 39,99 € today · cancel anytime in Settings' : 'Nothing today · cancel anytime in Settings';
-  document.getElementById('payCta').textContent = yr ? 'Start Now – 39,99 € / year' : 'Start Today for Free';
+  var yr = A || S.plan==='year';
+  document.getElementById('paySub').textContent = yr ? t('pw.subY') : t('pw.subM');
+  document.getElementById('payTrust').textContent = yr ? t('pw.trY') : t('pw.trM');
+  document.getElementById('payCta').textContent = A ? t('cont') : (yr ? t('pw.ctaY') : t('pw.ctaM'));
 
   var cl=document.getElementById('connList'); cl.innerHTML='';
   S.banks.forEach(function(k){ var b=BANK[k], d=document.createElement('div'); d.className='sp-crow';
-    d.innerHTML=(b.txt?'<span class="nm">Cash wallet</span><span>Add</span>':'<img src="'+b.img+'" alt="'+b.n+'"><span>Connect</span>'); cl.appendChild(d); });
-  document.getElementById('connCta').textContent = rb.length ? ('Connect '+names[0]) : 'Add my cash wallet';
+    d.innerHTML=(b.txt?'<span class="nm">'+t('po.cashw')+'</span><span>'+t('cn.add')+'</span>':'<img src="'+b.img+'" alt="'+b.n+'"><span>'+t('cn.conn')+'</span>'); cl.appendChild(d); });
+  document.getElementById('connCta').textContent = rb.length ? t('cn.cta',{x:names[0]}) : t('cn.cash');
 }
 
-/* ---- router ---- */
-var ORDER=['welcome','goal','save','banks','budget','loader','payoff','paywall','offer','connect'];
-var LABEL={welcome:'Welcome',goal:'Goal',save:'Saving for',banks:'Banks',budget:'Budget',loader:'Loader',payoff:'Payoff',paywall:'Paywall',offer:'Offer on close',connect:'Connect'};
+/* ================= router ================= */
+var BASE=['welcome','goal','save','banks','budget','loader','payoff','paywall','offer','connect'];
+function ORDER(){ if(S.variant!=='a') return BASE; var o=BASE.slice(); o.splice(o.indexOf('paywall')+1,0,'sheet'); return o; }
+var LABEL={welcome:'Welcome',goal:'Goal',save:'Saving for',banks:'Banks',budget:'Budget',loader:'Loader',payoff:'Payoff',paywall:'Paywall',sheet:'Monthly sheet',offer:'Offer on close',connect:'Connect'};
 var scr={}, hist=[], cur='welcome', loadTimers=[], cdTimer=null;
 document.querySelectorAll('.scr').forEach(function(s){ scr[s.dataset.id]=s; });
 
-function chrome(){ var l=!!scr[cur].dataset.light;
-  document.getElementById('sbar').classList.toggle('light',l); document.getElementById('homebar').classList.toggle('light',cur==='loader'); }
+function chrome(){ var dark=S.theme==='dark', l=dark || !!scr[cur].dataset.light;
+  document.getElementById('sbar').classList.toggle('light',l); document.getElementById('homebar').classList.toggle('light',dark || cur==='loader'); }
 function enter(id){ chrome(); paintChips(); paintPanel(); clearLoad(); stopCd();
   if(id==='loader') runLoader(); if(id==='offer') runCd(); if(id==='budget') requestAnimationFrame(setWheel); }
 function go(id,opts){
   opts=opts||{}; if(id===cur) return;
   var from=scr[cur], to=scr[id];
   if(!opts.back) hist.push(cur);
-  if(from){ from.classList.remove('is-active');
-    if(!to.classList.contains('sheet') && !from.classList.contains('sheet')) from.classList.add('is-past'); }
+  if(from && !to.dataset.overlay){ from.classList.remove('is-active');
+    if(!to.classList.contains('sheet') && !from.classList.contains('sheet') && !from.dataset.overlay) from.classList.add('is-past'); }
   Object.keys(scr).forEach(function(k){ if(k!==id&&k!==cur) scr[k].classList.remove('is-active'); });
   to.classList.remove('is-past'); to.classList.add('is-active');
   cur=id; enter(id);
@@ -989,24 +1237,26 @@ function back(){
   var prev=hist.pop();
   scr[cur].classList.remove('is-active');
   scr[prev].classList.remove('is-past'); scr[prev].classList.add('is-active');
+  if(scr[prev].dataset.overlay) scr.paywall.classList.add('is-active');
   cur=prev; enter(prev);
 }
 function jump(id){
-  var i=ORDER.indexOf(id);
+  var o=ORDER(), i=o.indexOf(id);
   Object.keys(scr).forEach(function(k){ scr[k].classList.add('nofx'); scr[k].classList.remove('is-active','is-past'); });
-  hist=ORDER.slice(0,i<0?0:i);
-  if(id==='offer'){ scr.paywall.classList.add('is-active'); }
+  hist=o.slice(0,i<0?0:i);
+  if(id==='offer'||id==='sheet') scr.paywall.classList.add('is-active');
   scr[id].classList.add('is-active'); cur=id;
   requestAnimationFrame(function(){ requestAnimationFrame(function(){
     Object.keys(scr).forEach(function(k){ scr[k].classList.remove('nofx'); }); }); });
   syncScreen(); enter(id);
 }
+var chipKey='';
 function paintChips(){
-  var c=document.getElementById('chips');
-  if(!c.childElementCount){
-    ORDER.forEach(function(id){
+  var c=document.getElementById('chips'), o=ORDER();
+  if(chipKey!==o.join()){ chipKey=o.join(); c.innerHTML='';
+    o.forEach(function(id){
       var b=document.createElement('button'); b.className='chip'+(id==='offer'?' offer':''); b.textContent=LABEL[id];
-      b.dataset.id=id; b.onclick=function(){ jump(id); }; c.appendChild(b);
+      b.dataset.id=id; b.onclick=function(){ stopDemo(); jump(id); }; c.appendChild(b);
     });
   }
   c.querySelectorAll('.chip').forEach(function(b){ b.classList.toggle('on', b.dataset.id===cur); });
@@ -1014,7 +1264,7 @@ function paintChips(){
 
 function clearLoad(){ loadTimers.forEach(clearTimeout); loadTimers=[]; }
 function runLoader(){
-  var steps=document.querySelectorAll('#loadSteps .sp-ls');
+  var steps=[].slice.call(document.querySelectorAll('#loadSteps .sp-ls')).filter(function(s){ return !s.classList.contains('hidden'); });
   steps.forEach(function(s){ s.classList.remove('on'); });
   function showQuote(i){
     document.getElementById('qText').textContent='“'+QUOTES[i][0]+'”';
@@ -1022,23 +1272,94 @@ function runLoader(){
     document.querySelectorAll('#qDots i').forEach(function(d,n){ d.classList.toggle('on',n===i); });
   }
   showQuote(0);
-  steps.forEach(function(s,i){ loadTimers.push(setTimeout(function(){ s.classList.add('on'); },700+i*900)); });
+  steps.forEach(function(s,i){ loadTimers.push(setTimeout(function(){ s.classList.add('on'); },600+i*800)); });
   [1,2,3].forEach(function(i){ loadTimers.push(setTimeout(function(){ showQuote(i); },1400+(i-1)*1400)); });
   loadTimers.push(setTimeout(function(){ if(cur==='loader') go('payoff'); },5400));
 }
 function stopCd(){ if(cdTimer){ clearInterval(cdTimer); cdTimer=null; } }
-function runCd(){ var t=300; function p(){ document.getElementById('cdM').textContent=('0'+Math.floor(t/60)).slice(-2); document.getElementById('cdS').textContent=('0'+(t%60)).slice(-2); }
-  p(); cdTimer=setInterval(function(){ t=Math.max(0,t-1); p(); },1000); }
+function runCd(){ var s=300; function p(){ document.getElementById('cdM').textContent=('0'+Math.floor(s/60)).slice(-2); document.getElementById('cdS').textContent=('0'+(s%60)).slice(-2); }
+  p(); cdTimer=setInterval(function(){ s=Math.max(0,s-1); p(); },1000); }
 
+/* ================= wiring ================= */
 document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ if(!b.disabled) go(b.dataset.go); }); });
 document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click',back); });
-document.querySelectorAll('#goalList .sp-row').forEach(function(b){ b.addEventListener('click',function(){
-  var v=b.dataset.v, i=S.goals.indexOf(v); if(i>-1) S.goals.splice(i,1); else S.goals.push(v); syncScreen(); }); });
 document.querySelectorAll('#planList .sp-plan').forEach(function(b){ b.addEventListener('click',function(){ S.plan=b.dataset.v; syncScreen(); }); });
-document.getElementById('payClose').addEventListener('click',function(){ go('offer'); });
+document.getElementById('payClose').addEventListener('click',function(){ go(S.variant==='a'?'sheet':'offer'); });
+document.getElementById('sheetNo').addEventListener('click',function(){ go('offer'); });
+document.getElementById('sheetCta').addEventListener('click',function(){ go('connect'); });
 document.getElementById('offClose').addEventListener('click',function(){ go('connect'); });
 document.getElementById('payCta').addEventListener('click',function(){ go('connect'); });
 document.getElementById('offerCta').addEventListener('click',function(){ go('connect'); });
+function stepper(id,key,stepFn,dir){ document.getElementById(id).addEventListener('click',function(){ var st=stepFn(); S[key]=Math.max(st, S[key]+dir*st); syncScreen(true); }); }
+stepper('tgtMinus','target',tgtStep,-1); stepper('tgtPlus','target',tgtStep,1);
+stepper('monMinus','monthly',function(){ return C().mstep; },-1); stepper('monPlus','monthly',function(){ return C().mstep; },1);
+
+function setSeg(id,attr,val){ document.querySelectorAll('#'+id+' button').forEach(function(b){ b.classList.toggle('on', b.dataset[attr]===val); }); }
+function setLang(l){
+  var before=cc(); S.lang=l; S0.lang=l; var after=cc();
+  if(before!==after){ var r=after==='CZK'?25:1/25, c=C();
+    S.budget=Math.min(c.wmax,Math.max(c.wmin,snap(S.budget*r,c.wstep))); S.monthly=snap(S.monthly*r,c.mstep); S.target=snap(S.target*r,tgtStep()); }
+  setSeg('segLang','lang',l); applyStatic(); syncScreen(); paintPanel();
+}
+function setTheme(th){ S.theme=th; S0.theme=th; document.getElementById('phoneIn').classList.toggle('dark',th==='dark'); setSeg('segTheme','theme',th); chrome(); }
+function setVariant(v){ S.variant=v; setSeg('segVar','var',v);
+  if(v==='b' && cur==='sheet'){ jump('offer'); return; }
+  syncScreen(); paintChips(); paintPanel(); }
+document.querySelectorAll('#segLang button').forEach(function(b){ b.addEventListener('click',function(){ stopDemo(); setLang(b.dataset.lang); }); });
+document.querySelectorAll('#segTheme button').forEach(function(b){ b.addEventListener('click',function(){ setTheme(b.dataset.theme); }); });
+document.querySelectorAll('#segVar button').forEach(function(b){ b.addEventListener('click',function(){ stopDemo(); setVariant(b.dataset.var); }); });
+
+/* ================= the 60-second walkthrough ================= */
+var demo={tok:0,on:false,t0:0,iv:null}, finger=document.getElementById('finger'), phoneIn=document.getElementById('phoneIn');
+function W(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
+function cap(txt){ document.getElementById('demoTxt').textContent=txt; }
+async function tap(sel,tok){
+  if(demo.tok!==tok) throw 0;
+  var el=document.querySelector(sel); if(!el) return;
+  var r=el.getBoundingClientRect(), p=phoneIn.getBoundingClientRect(), z=p.width/phoneIn.offsetWidth||1;
+  finger.style.left=((r.left-p.left+r.width/2)/z)+'px'; finger.style.top=((r.top-p.top+r.height/2)/z)+'px';
+  finger.classList.add('show'); await W(520); if(demo.tok!==tok) throw 0;
+  finger.classList.add('press'); await W(160); finger.classList.remove('press'); el.click(); await W(260);
+  if(demo.tok!==tok) throw 0;
+}
+async function pause(ms,tok){ await W(ms); if(demo.tok!==tok) throw 0; }
+function startDemo(){
+  stopDemo(); var tok=++demo.tok; demo.on=true; demo.t0=Date.now();
+  var keep={lang:S.lang,theme:S.theme}; S=defaults(); S.lang=keep.lang; S.theme=keep.theme;
+  if(cc()==='CZK'){ var c=C(); S.budget=c.budget; S.monthly=c.monthly; } S.target=defaultTarget('car');
+  setSeg('segVar','var','b'); applyStatic(); jump('welcome');
+  document.getElementById('demoCap').classList.remove('hidden');
+  demo.iv=setInterval(function(){ document.getElementById('demoProg').style.width=Math.min(100,(Date.now()-demo.t0)/580)+'%'; },200);
+  (async function(){
+    try{
+      cap('A new install opens on your welcome screen — not on a price.'); await pause(3400,tok);
+      await tap('[data-id=welcome] .sp-btn',tok);
+      cap('Four quick setup taps. First: what matters to them.'); await pause(1700,tok);
+      await tap('#goalList [data-v=track]',tok); await pause(900,tok); await tap('#goalBtn',tok);
+      cap('What they are saving for. Say, a new car.'); await pause(1600,tok);
+      await tap('#saveGrid [data-v=car]',tok); await pause(900,tok); await tap('[data-id=save] .sp-btn',tok);
+      cap('Which banks they use, on your own logo tiles.'); await pause(1400,tok);
+      await tap('#bankGrid [data-v=barclays]',tok); await pause(900,tok); await tap('#bankBtn',tok);
+      cap('One number: what they want to spend a month.'); await pause(1200,tok);
+      wheel.scrollTo({top:wheel.scrollTop+3*IH,behavior:'smooth'}); await pause(1900,tok);
+      await tap('[data-id=budget] .sp-btn',tok);
+      cap('Their answers, read back while it sets up.'); await pause(5700,tok);
+      cap('The payoff: what they can spend a day, and when the car is paid for.'); await pause(2200,tok);
+      await tap('#monPlus',tok); await pause(500,tok); await tap('#monPlus',tok); await pause(1600,tok);
+      await tap('[data-id=payoff] .sp-btn',tok);
+      cap('The paywall opens on their goal, their budget and your awards.'); await pause(3400,tok);
+      await tap('#planList [data-v=month]',tok); await pause(1500,tok); await tap('#planList [data-v=year]',tok); await pause(1200,tok);
+      cap('They close it. One offer, on your own 29,99 € price.'); await tap('#payClose',tok); await pause(4600,tok);
+      cap('That is the flow. Flip “Paywall: Today” above the phone to compare with what ships now.');
+      finger.classList.remove('show'); await pause(5000,tok); stopDemo();
+    }catch(e){}
+  })();
+}
+function stopDemo(){ if(!demo.on) return; demo.tok++; demo.on=false; clearInterval(demo.iv); finger.classList.remove('show','press');
+  document.getElementById('demoCap').classList.add('hidden'); }
+document.getElementById('demoBtn').addEventListener('click',startDemo);
+document.getElementById('demoStop').addEventListener('click',stopDemo);
+phoneIn.addEventListener('pointerdown',function(e){ if(e.isTrusted && demo.on) stopDemo(); });
 </script>
 <script>
 /* ---- the short panel: hypothesis + potential outcome, nothing else ---- */
@@ -1047,49 +1368,42 @@ welcome:{n:1,t:'Show the app before the price',
  hyp:'Try opening on this screen, <b>because today the 39,99 € paywall, a monthly-trial sheet and a 20% offer all appear before anyone reaches Get Started</b>. The price now comes after they have set something up.',
  kept:'Your welcome screen untouched — the bank-logo grid on your green, “We’ve been helping with money for 11 years”, the Forbes, 4.8 and Top 10 tiles, Get Started and Sign In.',
  out:'CR +10–20%'},
-
 goal:{n:2,t:'Turn a few taps into a daily budget',
  hyp:'Try asking what they want to get on top of, <b>because that answer then decides which benefits your paywall lists first</b>. The four options are the four lines already on your paywall.',
  kept:'Your check circles and bold-phrase copy, lifted from the paywall feature list.',
  out:'CR +10–20%'},
-
 save:{n:2,t:'Turn a few taps into a daily budget',
  hyp:'Try asking what they are saving for, <b>because the answer then puts their goal on the paywall — pick a new car and the paywall opens on a car</b>. The options are the ones your own homepage names: a new car, a dream vacation, university.',
  kept:'Your radius, your green check, your type. The photos are free-licence stock picked to match each goal.',
  out:'CR +10–20%'},
-
 banks:{n:2,t:'Turn a few taps into a daily budget',
  hyp:'Try letting them tap the banks they use, <b>because your logo grid already sells bank sync — now it also tells the app which bank to connect first</b>.',
  kept:'Your white logo pills on your green, straight from the welcome screen.',
  out:'CR +10–20%'},
-
 budget:{n:2,t:'Turn a few taps into a daily budget',
  hyp:'Try asking for one number, a monthly budget, <b>because Spendee already turns a budget into what you can spend each day</b>. The payoff is real arithmetic, not a promise. Scroll the wheel and the next screens change.',
  kept:'Your green, your type and your pill button. The wheel is a working control.',
  out:'CR +10–20%'},
-
 loader:{n:2,t:'Turn a few taps into a daily budget',
  hyp:'Try naming their answers back while it sets up, <b>because a loader only pays off when something personal comes after it</b>. The four quotes are from your own homepage.',
  kept:'Your welcome-screen green and your donut mark.',
  out:'CR +10–20%'},
-
 payoff:{n:2,t:'Turn a few taps into a daily budget',
- hyp:'Try showing the daily amount before the price, <b>because it is their own budget divided by the days in the month — the same sum your budgets do</b> — with what they are saving for and the banks they picked right next to it.',
- kept:'Your donut colours, card surfaces and logo pills. The free-plan limits are from your pricing page.',
+ hyp:'Try showing the daily amount before the price, <b>because it is their own budget divided by the days in the month — the same sum your budgets do</b>. Their goal sits next to it: set a target and a monthly amount, and the date it is reached moves with them.',
+ kept:'Your donut colours, card surfaces and logo pills. The free-plan limits are from your pricing page. Every number here is their own input.',
  out:'CR +10–20%'},
-
 paywall:{n:3,t:'Put their goal and your awards on the paywall',
  hyp:'Try opening the paywall on what they are saving for, naming their budget in your headline and moving your Forbes, 4.8 and Top 10 row above the plans, <b>because today the paywall speaks to nobody in particular</b>. Go back to “Saving for” and pick a vacation — the paywall turns into a beach.',
  hyp2:'Try both plans on one screen with the saving shown, <b>because monthly only appears in a sheet after closing, and 39,99 € a year is never shown as 3,33 € a month — 52% less than 6,99 € monthly</b>.',
  n2:4, out2:'ARPU +10–15%',
- kept:'Your headline shape, donut mark, soft background, check-circle list, mint plan card with the dotted “7 days free” badge and your green button. Tap Monthly — the line under the headline, the trust line and the button all switch to your trial copy.',
+ kept:'Your headline shape, donut mark, soft background, check-circle list, mint plan card with the dotted “7 days free” badge and your green button. Flip “Paywall: Today” above the phone to see the version that ships now.',
  out:'CR +15–20%'},
-
+sheet:{ctx:true,t:'Not ready for a year? — today',
+ kept:'Your monthly-trial sheet as it ships today, opened by the paywall’s X. In the proposed version monthly sits on the paywall itself and this step goes away — that is idea 04.'},
 offer:{n:5,t:'One offer on close, not two',
  hyp:'Try this as the only second chance, reached from the paywall’s X, <b>because today closing the paywall opens the monthly sheet and then this offer back to back, before the app has said hello</b>. 29,99 € is your own price, so nothing here is invented.',
- kept:'Your Limited Time Offer screen as it ships — the gift, 20% OFF, both price lines, the “Offer ends soon” pill, the countdown boxes and the confetti.',
+ kept:'Your Limited Time Offer screen as it ships — the gift, 20% OFF, both price lines, the “Offer ends soon” pill, the countdown boxes and the confetti. Flip “Paywall: Today” to see both steps in today’s order.',
  out:'ARPU +10–15%'},
-
 connect:{ctx:true,t:'Connect your first bank',
  kept:'Where the flow hands over to the app. Bank connection stays after purchase, where it is today; the banks they tapped are carried across so the first one is a single tap.'}
 };
@@ -1115,6 +1429,7 @@ function paintPanel(){
     }
     h += '<div class="pn-kept"><b>Your design, unchanged.</b> '+d.kept+'</div>';
   }
+  if(S.lang!=='en') h += '<div class="pn-kept"><b>Language.</b> Screens are shown in '+(S.lang==='cs'?'Czech':'German')+' to show one flow serving every market. Store prices stay as published in euros; the loader quotes stay verbatim in English.</div>';
   h += '<div class="pn-foot">Ranges are Adapty’s expected effect from tests across 30,000+ subscription apps — not measured lift for Spendee. '
      + 'Prices, ratings, quotes and feature lines come from your own published material.</div>';
   document.getElementById('panel').innerHTML = h;
@@ -1122,6 +1437,7 @@ function paintPanel(){
 
 /* ---- views, jumps from the overview ---- */
 function showView(v){
+  if(v!=='proto') stopDemo();
   document.querySelectorAll('.view').forEach(function(x){ x.classList.remove('on'); });
   document.getElementById('view-'+v).classList.add('on');
   document.querySelectorAll('.nav-links button[data-view]').forEach(function(b){ b.classList.toggle('on', b.dataset.view===v); });
@@ -1132,9 +1448,12 @@ document.querySelectorAll('[data-view]').forEach(function(b){ b.addEventListener
 document.querySelectorAll('.idea[data-jump]').forEach(function(b){
   b.addEventListener('click',function(){ showView('proto'); jump(b.dataset.jump); });
 });
+document.querySelectorAll('[data-demo]').forEach(function(b){ b.addEventListener('click',function(){ showView('proto'); startDemo(); }); });
 
+applyStatic();
 scr.welcome.classList.add('is-active');
 syncScreen(); chrome(); paintChips(); paintPanel();
+if(/[?&]open=proto/.test(location.search)) showView('proto');
 </script>
 </body>
 </html>
